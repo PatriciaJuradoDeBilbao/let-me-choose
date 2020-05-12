@@ -23,13 +23,22 @@ class Navigation extends Component {
     render() {
 
         return (
-            <Navbar bg="dark" variant="dark" expand="md">
-                <Navbar.Brand as="div"><Link to="/">Coasters React!</Link></Navbar.Brand>
+            <Navbar bg="light" variant="light" expand="md">
+                <Navbar.Brand as="div"><Link to="/">
+                    <img
+                        src="../flechas.svg"
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                        alt="Logo"
+                    />
+                </Link></Navbar.Brand>
+                <Navbar.Brand as="div" className="text-nav-logo"><Link to="/">Let me choose</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
                         <Nav.Link as="div"><Link to="/">Inicio</Link></Nav.Link>
-                        <Nav.Link as="div"><Link to="/coasters">Montañas rusas</Link></Nav.Link>
+                        <Nav.Link as="div"><Link to="/restaurants">Restaurants</Link></Nav.Link>
 
                         {
                             !this.props.loggedInUser ?

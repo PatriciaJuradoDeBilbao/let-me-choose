@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const Restaurant = require('../models/Restaurant.model')
+const Comment = require('../models/Comment.model')
 
 // list all 
 router.get('/list', (req, res, next) => {
@@ -14,8 +15,7 @@ router.get('/list', (req, res, next) => {
 router.get('/detail/:id', (req, res, next) => {
     Restaurant.findById(req.params.id)
     .populate('myReviews')
-    
-    .then(data => console.log(data))
+    .then(data => res.json(data))
     .catch(err => console.log(err))
 })
 

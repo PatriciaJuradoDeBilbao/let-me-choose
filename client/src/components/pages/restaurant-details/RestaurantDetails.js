@@ -65,14 +65,14 @@ import RestaurantsService from '../../../service/restaurants.service'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
+import './RestaurantDetails.css'
 
 class RestaurantDetail extends Component {
 
     constructor(props) {
         super(props)
         this.state = { 
-            
+
         }
         this.restaurantsService = new RestaurantsService()
     }
@@ -94,24 +94,23 @@ class RestaurantDetail extends Component {
         return (
             <>
             <Container as="section">
-            <Row>
-                <Col md={4}>
-                <img src={this.state.imageUrl} alt={this.state.name}></img>
-                </Col>
-                <Col md={4}>
-                <h1>{this.state.name}</h1> 
-                <h2>Comida {this.state.type}</h2>
-                <h2>Rando de precio: {this.state.price}</h2>
-                <h2>Dirección:{this.state.direction}</h2>
-                </Col>
-            </Row>
-            {/* <Row>
-                <Col>
-            
-                </Col>
-            </Row> */}
-            
+            <h1>Más detalles sobre: {this.state.name}</h1> 
+            <Row className="restaurant-detail">
 
+                <Col md={{span: 4, offset: 1}} className="restaurant-info">
+                    <h2>{this.state.name}</h2> 
+                    <h3>Comida {this.state.type}</h3>
+                    <h3>Rango de precio: {this.state.price}</h3>
+                    <h3>Dirección: {this.state.direction}</h3>
+                </Col>
+                <Col md={6}>
+                    <img src={this.state.imageUrl} alt={this.state.name}></img>
+                </Col>
+                {/* <h1>
+                {this.setState.data.myReviews[0].content}
+
+                </h1> */}
+            </Row>
             </Container>
             </>
         )

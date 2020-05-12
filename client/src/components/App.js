@@ -70,6 +70,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import RestaurantList from './pages/restaurants-list/RestaurantsList'
 import RestaurantDetail from './pages/restaurant-details/RestaurantDetails'
+import Navigation from './ui/navbar/Navbar'
+import Login from './pages/login/Login'
 
 
 class App extends Component {
@@ -83,10 +85,14 @@ class App extends Component {
   render() {
     return (
       <>
-      <Switch>
-      <Route path="/restaurants" exact render={() => <RestaurantList /> } />
-      <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail {...props}/>} />
-      </Switch>
+      <Navigation />
+
+      <main>
+        <Switch>
+          <Route path="/restaurants" exact render={() => <RestaurantList /> } />
+          <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail {...props}/>} />
+        </Switch>
+      </main>
       </>
     )
   }
