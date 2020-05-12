@@ -1,0 +1,22 @@
+.restaurants-list .card{   
+    margin-bottom: 30px;
+}
+
+.restaurants-list img {
+    height: 180px;
+    object-fit: cover;
+}
+
+h3 {
+    font-size: 1.6em;
+    font-weight: 500;
+}
+
+h5 {
+    font-weight: 600;
+}
+
+.btn {
+    font-weight: 500;
+    font-size: .9em;
+}

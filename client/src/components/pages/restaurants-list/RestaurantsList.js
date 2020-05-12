@@ -94,9 +94,16 @@
 
 
 // MIO
+
+
+
+
 import React, { Component } from 'react'
 import RestaurantsService from '../../../service/restaurants.service'
-//import './Restaurants-list.css'
+import './RestaurantsList.css'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import RestaurantCard from './RestaurantCard'
 
 class RestaurantList extends Component {
 
@@ -110,7 +117,7 @@ class RestaurantList extends Component {
 
     getAllRestaurants = () =>  {
         this.restaurantsService.listRestaurants()
-        .then(response => this.setState({restaurants: response.data})
+            .then(response => this.setState({restaurants: response.data}))
         .catch(err => console.log(err))
     }
 
@@ -121,7 +128,11 @@ class RestaurantList extends Component {
     render() {
         return (
             <>
-            <h1> hi! </h1>
+            <Container as="section"> 
+            <Row className="restaurants-list">
+            {this.state.restaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)}
+            </Row>
+            </Container>
             </>
         )
     }

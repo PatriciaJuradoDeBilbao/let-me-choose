@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const restaurantSchema = new Schema({
-
+    imageUrl: String,
     name: String,
     creator: {type: Schema.Types.ObjectId, ref: 'User'},
     type: {
@@ -14,12 +14,13 @@ const restaurantSchema = new Schema({
         enum: ['Asequible(€)', 'Moderado(€€)', 'Caro(€€€)', 'Muy caro(€€€€)']
     },
     direction: String,
-    myReviews: [{type: Schema.Types.ObjectId, ref: 'Comment'}], 
+    myReviews: [{type: Schema.Types.ObjectId, ref: 'Comment'}] 
     
 }, {
     timestamps: true
 })
 restaurantSchema.index({ location: '2dsphere' })
+
 const Restaurant = mongoose.model("Restaurant", restaurantSchema)
 
 module.exports = Restaurant

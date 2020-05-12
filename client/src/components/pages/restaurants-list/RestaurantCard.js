@@ -29,7 +29,6 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 
@@ -38,10 +37,12 @@ const RestaurantCard = props => {
     return (
         <Col lg={3} md={6}>
             <Card as="article">
-                <Card.Title variant="top" src={props.name} />
+                <Card.Img variant="top" src={props.imageUrl} />
                 <Card.Body>
-                    <Card.Type>{props.type}</Card.Type>
-                    <Link to={`/detail/${props._id}`} className="btn btn-dark btn-block btn-sm">Ver detalles</Link>
+                    <Card.Title as="h3">{props.name}</Card.Title>
+                    <Card.Title>Comida {props.type}</Card.Title>
+                    <Card.Title as="h6">{props.price}</Card.Title>
+                    <Link to={`restaurants/detail/${props._id}`} className="btn btn-info">Ver detalles</Link>
                 </Card.Body>
             </Card>
         </Col>
@@ -49,3 +50,6 @@ const RestaurantCard = props => {
 }
 
 export default RestaurantCard
+
+
+

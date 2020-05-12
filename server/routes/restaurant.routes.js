@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const Restaurant = require('./../models/restaurant.model')
+const Restaurant = require('../models/Restaurant.model')
 
 // list all 
 router.get('/list', (req, res, next) => {
@@ -13,7 +13,9 @@ router.get('/list', (req, res, next) => {
 // detail
 router.get('/detail/:id', (req, res, next) => {
     Restaurant.findById(req.params.id)
-    .then(data => res.json(data))
+    .populate('myReviews')
+    
+    .then(data => console.log(data))
     .catch(err => console.log(err))
 })
 
@@ -24,7 +26,7 @@ router.post('/new', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-// delete FRAN
+// delete
 router.get('/:id/delete', (req, res, next) => {
     Restaurant.findByIdAndRemove(req.params.id)
         .then(data => res.json(data))
