@@ -65,53 +65,68 @@ import RestaurantsService from '../../../service/restaurants.service'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 import './RestaurantDetails.css'
+import ReviewCard from './ReviewCard'
 
 class RestaurantDetail extends Component {
 
     constructor(props) {
         super(props)
         this.state = { 
-
+            restaurantInfo: {}
         }
         this.restaurantsService = new RestaurantsService()
     }
 
     getRestaurantInfo() {
         const id = this.props.match.params.restaurantId
-        this.restaurantsService.detailRestaurant(id)
-            .then(response => this.setState(response.data))
-            .catch(err => console.log(err))
-    }
-
-    componentDidMount = () => {
-        this.getRestaurantInfo()
+        return this.restaurantsService.detailRestaurant(id)
         
     }
 
+    displayReviews = () => {
+        return this.state.restaurantInfo.myReviews.map(review => <ReviewCard key={review} {...review}/>)
+
+    }
+
+
+    componentDidMount = () => {
+        this.getRestaurantInfo()
+        .then(response => this.setState({
+            restaurantInfo: response.data
+        }))
+        .catch(err => console.log(err))
+    }
+
+    
 
     render() {
+        const {name, type, price, direction, imageUrl, myReviews} = this.state.restaurantInfo
         return (
             <>
             <Container as="section">
-            <h1>Más detalles sobre: {this.state.name}</h1> 
             <Row className="restaurant-detail">
 
-                <Col md={{span: 4, offset: 1}} className="restaurant-info">
-                    <h2>{this.state.name}</h2> 
-                    <h3>Comida {this.state.type}</h3>
-                    <h3>Rango de precio: {this.state.price}</h3>
-                    <h3>Dirección: {this.state.direction}</h3>
+                <Col md={{span: 8, offset: 1}} className="restaurant-info">
+                    <Card>
+                        <Card.Body>
+                        <Card.Text className="title-card">{name}</Card.Text>
+                        <Card.Text className="text-card">Comida {type}</Card.Text>
+                        <Card.Text className="text-card">Rango de precio: {price}</Card.Text>
+                        <Card.Text className="text-card">Dirección: {direction}</Card.Text>
+                        </Card.Body>
+                        <Card.Img variant="bottom" src={imageUrl} />
+                    </Card>
                 </Col>
-                <Col md={6}>
-                    <img src={this.state.imageUrl} alt={this.state.name}></img>
-                </Col>
-                {/* <h1>
-                {this.setState.data.myReviews[0].content}
-
-                </h1> */}
             </Row>
+            <Row>
+                {myReviews && this.displayReviews()}
+            </Row>
+
+            
             </Container>
+
             </>
         )
     }

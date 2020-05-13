@@ -1,0 +1,18 @@
+a {
+    color:black;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  a:hover {
+    font-size: 1.15em;
+    transition: .3s;
+    font-weight: 500;
+    color: #1a6b9f;
+    text-decoration: none;
+  }
+
+  .navbar {
+    margin-bottom: 40px;
+  }
+  

@@ -71,7 +71,9 @@ import './App.css'
 import RestaurantList from './pages/restaurants-list/RestaurantsList'
 import RestaurantDetail from './pages/restaurant-details/RestaurantDetails'
 import Navigation from './ui/navbar/Navbar'
-import Login from './pages/login/Login'
+import Home from './pages/home/Home'
+//import Footer from './ui/footer/Footer'
+//import Login from './pages/login/Login'
 
 
 class App extends Component {
@@ -86,13 +88,16 @@ class App extends Component {
     return (
       <>
       <Navigation />
-
       <main>
         <Switch>
+          <Route path="/" exact render={() => <Home /> }></Route>
           <Route path="/restaurants" exact render={() => <RestaurantList /> } />
           <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail {...props}/>} />
         </Switch>
       </main>
+      {/* <footer>
+        <Footer />
+      </footer> */}
       </>
     )
   }

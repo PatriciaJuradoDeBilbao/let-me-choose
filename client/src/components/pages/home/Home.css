@@ -1,0 +1,32 @@
+.text-home {
+    font-size: 4em;
+    font-weight: 600;
+    color: #1a6b9f;
+    text-align: center;
+  }
+  
+  .img-logo {
+    width: 45px;
+  }
+
+  .img-logo-btn {
+    width: 45px;
+  }  
+
+  p {
+      font-weight: 400;
+      font-size: 1.6em;
+      text-align: center;
+  }
+
+  .btn-choose img {
+    width: 25px;
+    margin: 0 1px;
+  }
+
+  .btn-choose {
+    justify-content: center;
+    font-weight: 500;
+    font-size: 1.6em;
+  }
+
