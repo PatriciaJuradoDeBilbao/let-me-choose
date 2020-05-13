@@ -25,7 +25,7 @@ class Navigation extends Component {
         return (
             <Navbar bg="light" variant="light" expand="md">
                 <Navbar.Brand as="div"><Link to="/">
-                    <img src="../flechas.svg" width="40" height="40" className="d-inline-block align-top" alt="Logo"/>
+                    <img src="../flechas.svg" width="40" height="40" className="d-inline-block align-top logo-navbar" alt="Logo"/>
                 </Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

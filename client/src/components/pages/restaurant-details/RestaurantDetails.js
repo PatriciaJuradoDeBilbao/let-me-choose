@@ -5,8 +5,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
-import './RestaurantDetails.css'
 import ReviewCard from './ReviewCard'
+import './RestaurantDetails.css'
 
 class RestaurantDetail extends Component {
 
@@ -21,14 +21,14 @@ class RestaurantDetail extends Component {
     getRestaurantInfo() {
         const id = this.props.match.params.restaurantId
         return this.restaurantsService.detailRestaurant(id)
-        
     }
 
     displayReviews = () => {
         return this.state.restaurantInfo.myReviews.map(review => <ReviewCard key={review._id}{...review}/>)
-
     }
+    
 
+    
     componentDidMount = () => {
         this.getRestaurantInfo()
         .then(response => this.setState({
@@ -37,7 +37,8 @@ class RestaurantDetail extends Component {
         .catch(err => console.log(err))
     }
 
-    
+
+
 
     render() {
         const {name, type, price, direction, imageUrl, myReviews} = this.state.restaurantInfo
@@ -62,7 +63,7 @@ class RestaurantDetail extends Component {
                 <Row>
                    
                     <Col md={{span: 8, offset: 1}}>
-                        <h5>Media Rating <img className="img-rating" src="../../../../estrella_rating.svg" alt="Star icon" /></h5>  
+                        <h5>  <img className="img-rating" src="../../../../estrella_rating.svg" alt="Star icon" /></h5>  
                     </Col>
                     <Col md={{span: 8, offset: 1}}>
                         <hr/>

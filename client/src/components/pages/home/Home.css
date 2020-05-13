@@ -1,8 +1,12 @@
+.home {
+  padding: 100px;
+}
+
 .text-home {
-    font-size: 4em;
-    font-weight: 600;
-    color: #1a6b9f;
-    text-align: center;
+  font-size: 4em;
+  font-weight: 600;
+  color: #1a6b9f;
+  text-align: center;
   }
   
   .img-logo {
@@ -14,9 +18,9 @@
   }  
 
   p {
-      font-weight: 400;
-      font-size: 1.6em;
-      text-align: center;
+    font-weight: 400;
+    font-size: 1.6em;
+    text-align: center;
   }
 
 

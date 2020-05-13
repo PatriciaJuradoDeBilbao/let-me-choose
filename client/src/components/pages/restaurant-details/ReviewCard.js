@@ -3,6 +3,11 @@ import Col from 'react-bootstrap/Col'
 
 const ReviewCard = review => {
 
+    // const averageRating = () => {
+    //     return review.rating.reduce((acc, cu) => {
+    //         return acc + cu
+    //     }, 0) / review.rating.length - 1 
+    // }
     return (
         <>
         <Col md={{span: 8, offset: 1}}>
