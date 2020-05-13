@@ -65,23 +65,26 @@
 // ------------ MIO -------------
 
 import React, { Component} from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import RestaurantList from './pages/restaurants-list/RestaurantsList'
 import RestaurantDetail from './pages/restaurant-details/RestaurantDetails'
 import Navigation from './ui/navbar/Navbar'
 import Home from './pages/home/Home'
+import Signup from './pages/signup/Signup'
+import Login from './pages/login/Login'
+import Profile from './pages/profile/Profile'
+import AuthService from './../service/auth.service'
 //import Footer from './ui/footer/Footer'
-//import Login from './pages/login/Login'
 
 
 class App extends Component {
 
   constructor() {
     super()
-    this.state = {
-    }
+    this.state = { loggedInUser: null }
+    this.authService = new AuthService()
   }
 
   render() {
@@ -90,14 +93,15 @@ class App extends Component {
       <Navigation />
       <main>
         <Switch>
+          <Route path="/signup" render={props => <Signup {...props} setTheUser={this.setTheUser} />} />
+          <Route path="/login" render={props => <Login {...props} setTheUser={this.setTheUser} />} />
           <Route path="/" exact render={() => <Home /> }></Route>
           <Route path="/restaurants" exact render={() => <RestaurantList /> } />
           <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail {...props}/>} />
+          <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
         </Switch>
       </main>
-      {/* <footer>
-        <Footer />
-      </footer> */}
+
       </>
     )
   }

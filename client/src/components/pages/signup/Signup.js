@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import AuthService from './../../../service/auth.service'
-
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
 import { Link } from 'react-router-dom'
 
 
@@ -16,7 +14,9 @@ class Signup extends Component {
         super(props)
         this.state = {
             loginInfo: {
+                name: '',
                 username: '',
+                email: '',
                 password: ''
             },
             errorMessage: ''
@@ -47,32 +47,31 @@ class Signup extends Component {
     }
 
 
-
     render() {
 
         return (
             <Container>
 
                 <Row>
-                    <Col md={{ span: 4, offset: 4 }}>
+                    <Col md={{ span: 6, offset: 2 }}>
 
                         <h3>Registro de usuario</h3>
                         <hr></hr>
                         <Form onSubmit={this.handleSubmit}>
 
-                            {/* <Form.Group controlId="name">
+                            <Form.Group controlId="name">
                                 <Form.Label>Nombre</Form.Label>
                                 <Form.Control name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
-                            </Form.Group> */}
-
-                            {/* <Form.Group controlId="email">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control name="email" type="email" value={this.state.email} onChange={this.handleInputChange} />
-                            </Form.Group> */}
+                            </Form.Group>
 
                             <Form.Group controlId="username">
                                 <Form.Label>Usuario</Form.Label>
                                 <Form.Control name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
+                            </Form.Group>
+
+                            <Form.Group controlId="email">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control name="email" type="email" value={this.state.email} onChange={this.handleInputChange} />
                             </Form.Group>
 
                             <Form.Group controlId="pwd">
@@ -80,15 +79,15 @@ class Signup extends Component {
                                 <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
                             </Form.Group>
 
+
+                            <Button variant="info" className="btn btn-block" type="submit">Registrarme</Button>
                             <p
                                 className='error-message'
                                 style={{ display: this.state.errorMessage ? 'block' : 'none' }}
                             >{this.state.errorMessage}</p>
-
-                            <Button variant="dark" type="submit">Registrarme</Button>
                         </Form>
 
-                        <p><small>¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link></small></p>
+                        <p className="signup-text"><small>¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link></small></p>
 
                     </Col>
                 </Row>

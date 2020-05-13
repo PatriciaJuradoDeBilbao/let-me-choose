@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card'
 const RestaurantCard = props => {
 
     return (
-        <Col lg={3} md={6}>
+        <Col lg={3} md={4}>
             <Card as="article">
                 <Card.Img variant="top" src={props.imageUrl} />
                 <Card.Body>

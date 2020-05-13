@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import AuthService from '../../../service/auth.service'
-
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
 import { Link } from 'react-router-dom'
 
 
@@ -39,11 +37,9 @@ class Login extends Component {
         this.authService.login(this.state.loginInfo)
             .then(response => {
                 this.props.setTheUser(response.data)
-                this.props.history.push('/')
+                this.props.history.push('/profile')
             })
-            .catch(err => {
-                err.response.status === 400 && this.setState({ errorMessage: err.response.data.message })
-            })
+            .catch(err => console.log(err))
     }
 
 
@@ -54,7 +50,7 @@ class Login extends Component {
             <Container>
 
                 <Row>
-                    <Col md={{ span: 4, offset: 4 }}>
+                    <Col md={{ span: 6, offset: 2 }}>
 
                         <h3>Inicio de sesión</h3>
                         <hr></hr>
@@ -70,15 +66,15 @@ class Login extends Component {
                                 <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
                             </Form.Group>
 
+
+                            <Button variant="info" className="btn btn-block" type="submit">Iniciar sesión</Button>
                             <p
                                 className='error-message'
                                 style={{ display: this.state.errorMessage ? 'block' : 'none' }}
                             >{this.state.errorMessage}</p>
-
-                            <Button variant="dark" type="submit">Iniciar sesión</Button>
                         </Form>
 
-                        <p><small>¿No tienes cuenta? <Link to="/signup">Regístrate</Link></small></p>
+                        <p className="login-text"><small>¿No tienes cuenta? <Link to="/signup">Regístrate</Link></small></p>
 
                     </Col>
                 </Row>

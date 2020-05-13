@@ -4,7 +4,7 @@ a {
     font-weight: 500;
   }
   
-  a:hover {
+  .navbar a:hover {
     font-size: 1.15em;
     transition: .3s;
     font-weight: 500;

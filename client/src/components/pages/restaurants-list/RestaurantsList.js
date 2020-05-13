@@ -95,15 +95,15 @@
 
 // MIO
 
-
-
-
 import React, { Component } from 'react'
 import RestaurantsService from '../../../service/restaurants.service'
 import './RestaurantsList.css'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
 import RestaurantCard from './RestaurantCard'
+import { Link } from 'react-router-dom'
 
 class RestaurantList extends Component {
 
@@ -129,8 +129,38 @@ class RestaurantList extends Component {
         return (
             <>
             <Container as="section"> 
+            <Row>
+                <Col md={{span: 6, offset: 5}}>
+                <Link to="/{_id}" className="btn btn-dark btn-choose">Ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se</Link>
+                </Col>
+            </Row>
+
+            <Row className="restaurants-filter">
+            <Col md={4}>
+                <Form>
+                    <Form.Group controlId="exampleForm.SelectCustom">
+                        <Form.Label>Elige por tipo de comida</Form.Label>
+                        <Form.Control as="select" custom>
+                        <option>{this.state.restaurants.map(elm => this.state.restaurants.type)}</option>
+                        </Form.Control>
+                    </Form.Group>
+                </Form>
+            </Col>
+            <Col md={4}>
+                <Form>
+                    <Form.Group controlId="exampleForm.SelectCustom">
+                        <Form.Label>Elige por rango de precio</Form.Label>
+                        <Form.Control as="select" custom>
+                        <option></option>
+                        </Form.Control>
+                    </Form.Group>
+                </Form>
+            </Col>
+            </Row>
+
             <Row className="restaurants-list">
-            {this.state.restaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)}
+                {this.state.restaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)}
+
             </Row>
             </Container>
             </>
