@@ -48,7 +48,7 @@ const restaurants = [
         direction: 'Calle de Hortaleza, 84, 28004 Madrid'
     },
     {
-        imageUrl: 'https://lh3.googleusercontent.com/proxy/t81mqwx6ExOMlaO8soAx1f9qnpszE5HgsscNyZRatLaguhEnqJ4Bb1JyLWQ9Tz-jepi0ucG0XJ34AqS-0GHigyOahuHTL9B3F4l7r3P_TSsz-8vkAf1R0tL93t0jfJ_1y1vO44h7KjJgGk6L_Gc',
+        imageUrl: 'https://lamadridmorena.files.wordpress.com/2017/08/grosso-napoletano-1.jpg',
         name: 'Grosso Napoletano',
         type: 'Italiana',
         price: 'Moderado(€€)',
@@ -97,7 +97,7 @@ const restaurants = [
         direction: 'Plaza de los Mostenses, 4, 28015 Madrid'
     },
     {
-        imageUrl: 'https://lh3.googleusercontent.com/proxy/QwElFK_gu8p5J7g_XcVOlRe-bXJgzkSGO3xHsTQd2zPTqCl9GEkAi1-Fz3fKuyu9oPwY7aM9OTLfPDw4qEihsKOoGLt88Omt1Ocwp7wLSH9s5_JiKSZWkOQ4EiyY_A8-yF-F_Nz1Tw',
+        imageUrl: 'https://comercongusto.es/wp-content/uploads/2017/06/Asia-Gallery-Entrada.jpg',
         name: 'Asian Gallery',
         type: 'Asiática',
         price: 'Muy caro(€€€€)',
@@ -461,7 +461,7 @@ Promise.all([deleteUsers, deleteRestaurant, deleteComment])
             })
             .then(allUsers => {
                 allU = allUsers
-                for (let i = 1; i <= 150; i++) {
+                for (let i = 1; i <= 250; i++) {
                     let comment = {
                         creator: allUsers[randomNum(allU.length)],
                         myRestaurant: allRest[randomNum(allRest.length)],

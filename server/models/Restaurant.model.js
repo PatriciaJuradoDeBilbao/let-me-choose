@@ -2,7 +2,10 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const restaurantSchema = new Schema({
-    imageUrl: String,
+    imageUrl: {
+        type: String,
+        default: 'https://image.flaticon.com/icons/svg/527/527095.svg'
+    },
     name: String,
     creator: {type: Schema.Types.ObjectId, ref: 'User'},
     type: {

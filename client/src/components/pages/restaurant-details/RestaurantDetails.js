@@ -27,7 +27,11 @@ class RestaurantDetail extends Component {
         return this.state.restaurantInfo.myReviews.map(review => <ReviewCard key={review._id}{...review}/>)
     }
     
-
+    averageRating = () => {
+        return this.state.restaurantInfo.myReviews.reduce((acc, cu) => {
+            return +acc + cu.rating
+        }, 0) / this.state.restaurantInfo.myReviews.length 
+    }
     
     componentDidMount = () => {
         this.getRestaurantInfo()
@@ -63,7 +67,7 @@ class RestaurantDetail extends Component {
                 <Row>
                    
                     <Col md={{span: 8, offset: 1}}>
-                        <h5>  <img className="img-rating" src="../../../../estrella_rating.svg" alt="Star icon" /></h5>  
+                        <h5>{myReviews && this.averageRating()}  <img className="img-rating" src="../../../../estrella_rating.svg" alt="Star icon" /></h5>  
                     </Col>
                     <Col md={{span: 8, offset: 1}}>
                         <hr/>

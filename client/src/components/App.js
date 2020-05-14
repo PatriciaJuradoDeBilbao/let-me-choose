@@ -87,10 +87,23 @@ class App extends Component {
     this.authService = new AuthService()
   }
 
+
+  setTheUser = userObj => this.setState({ loggedInUser: userObj })
+
+  fetchUser = () => {
+    if (this.state.loggedInUser === null) {
+      this.authService.isLoggedIn()
+        .then(response => this.setTheUser(response.data))
+        .catch(() => this.setTheUser(false))
+    }
+  }
+
+
   render() {
+    this.fetchUser()
     return (
       <>
-      <Navigation />
+      <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
       <main>
         <Switch>
           <Route path="/signup" render={props => <Signup {...props} setTheUser={this.setTheUser} />} />
