@@ -5,13 +5,13 @@ import Row from 'react-bootstrap/Row'
 import './Profile.css'
 
 const Profile = props => {
-
+console.log(props)
     return (
         <>
         <Container as="section">
             <Row as="article">
                 <Col md={{span: 8, offset:1}}>
-                <h1><img className="avatar-profile" src={props.loggedInUser.avatar} alt={props.loggedInUser.name}/> ¡Bienvenid@, {props.loggedInUser.name}!</h1>
+                <h1><img className="avatar-profile" src={props.loggedInUser.avatar} alt={props.loggedInUser.name}/> ¡Bienvenid@, {props.loggedInUser.username}!</h1>
                 </Col>
             </Row>
                     
@@ -21,7 +21,7 @@ const Profile = props => {
                     <hr/>
                 </Col>
                 <Col md={{span: 8, offset:1}}>
-                    <h4>{props.loggedInUser.myFavs}</h4>
+                    <h4>{props.loggedInUser.myFavs.map(favs => <p>{favs.name}</p>)}</h4>
                 </Col>
             </Row>
 
@@ -32,7 +32,7 @@ const Profile = props => {
                 </Col>
 
                 <Col md={{span: 8, offset:1}}>
-                    <h4>{props.loggedInUser.myWishList}</h4>
+                    <h4>{props.loggedInUser.myWishList.map(wish => <p>{wish.name}</p>)}</h4>
                 </Col>
             </Row>
         </Container>

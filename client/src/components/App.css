@@ -8,16 +8,47 @@ body {
 h1, h2, h3, h4, strong {
   font-weight: 400;
 }
+/*  --- AUTH --- */
 
-.signup-text {
-  text-align: start;
-  font-size: 1.3em;
+.title-signup {
+  text-align: center;
+  font-weight: 600;
 }
 
+.signup-text {
+  text-align: center;
+  font-size: 1.3em;
+}
+.btn-signup {
+  border: none;
+  border-radius: 40px;
+  background-color: #1a6a9f;
+  padding: 10px;
+
+}
+
+.title-login {
+  text-align: center;
+  font-weight: 600;
+}
 .login-text {
   text-align: start;
   font-size: 1.3em;
+
 }
+
+.btn-login {
+  border: none;
+  border-radius: 40px;
+  background-color: #1a6a9f;
+  padding: 10px;
+
+}
+
+
+
+
+
 
 .toast {
   position: fixed;

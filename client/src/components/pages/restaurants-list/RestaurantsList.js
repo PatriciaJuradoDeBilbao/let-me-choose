@@ -121,6 +121,10 @@ class RestaurantList extends Component {
         .catch(err => console.log(err))
     }
 
+    // randomRestaurant = () => {
+    //     this.restaurantsService.listRestaurants.map(Math.floor(Math.random() * this.restaurants.length))
+    // }
+
     componentDidMount = () => {
         this.getAllRestaurants()
     }
@@ -163,8 +167,8 @@ class RestaurantList extends Component {
                 </Row>
 
                 <Row>
-                    <Col md={{span: 6, offset: 5}}>
-                        <Link to="/{_id}" className="btn btn-info btn-choose">Ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se</Link>
+                    <Col md={{span: 8, offset: 2}}>
+                        <Link to="/{_id}" className="btn btn-info btn-choose btn-block">Ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se</Link>
                     </Col>
                 </Row>
 

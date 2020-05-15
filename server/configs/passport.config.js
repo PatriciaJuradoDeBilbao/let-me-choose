@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt")
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy
 const flash = require("connect-flash")
-
+const Restaurant = require('../models/Restaurant.model')
 const User = require('../models/user.model')
 
 module.exports = app => {
@@ -27,6 +27,8 @@ module.exports = app => {
 
     passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
         User.findOne({ username })
+        .populate('myFavs')
+        .populate('myWishList')
             .then(user => {
                 if (!user) {
                     return next(null, false, { message: "Nombre de usuario incorrecto" })

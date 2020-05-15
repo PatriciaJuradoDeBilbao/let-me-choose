@@ -52,7 +52,7 @@ class Login extends Component {
                 <Row>
                     <Col md={{ span: 6, offset: 2 }}>
 
-                        <h3>Inicio de sesión</h3>
+                        <h3 className="title-login">Inicio de sesión</h3>
                         <hr></hr>
                         <Form onSubmit={this.handleSubmit}>
 
@@ -67,7 +67,7 @@ class Login extends Component {
                             </Form.Group>
 
 
-                            <Button variant="info" className="btn btn-block" type="submit">Iniciar sesión</Button>
+                            <Button variant="info" className="btn btn-block btn-login" type="submit">Iniciar sesión</Button>
                             <p
                                 className='error-message'
                                 style={{ display: this.state.errorMessage ? 'block' : 'none' }}

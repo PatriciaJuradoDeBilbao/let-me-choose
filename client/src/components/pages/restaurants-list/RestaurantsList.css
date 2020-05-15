@@ -1,6 +1,7 @@
 .restaurants-list .card{   
     margin-bottom: 30px;
     min-height: 430px;
+    box-shadow: grey;
 }
 
 .restaurants-list img {
@@ -15,8 +16,9 @@ h3 {
 
 h5 {
     font-weight: 600;
-    font-size: 1.3em;
+    font-size: 1.4em;
 }
+
 
 .btn {
     font-weight: 500;
@@ -29,9 +31,30 @@ h5 {
   }
 
   .btn-choose {
-    align-items: center;
     font-weight: 500;
-    font-size: 1.6em;
-    padding: 10px 40px;
-    margin: 50px 0 50px 0;
+    font-size: 2em;
+    border: none;
+    border-radius: 40px;
+    background-color: #1a6a9f;
+    margin: 100px 0;
+    padding: 10px;
   }
+
+
+  /* --- RESTAURANT CARD -- */
+
+  .btn-detail {
+      border: none;
+      background-color: #1a6a9f;
+      border-radius: 40px;
+      color: white;
+      padding: 10px 15px;
+  }
+
+  .btn:hover {
+    color: white;
+    background-color: #185c8a;
+}
+
+
+

@@ -56,6 +56,10 @@ h6 {
 
 .btn-back {
     margin-bottom: 20px;
+    border: none;
+    border-radius: 40px;
+    background-color: #1a6a9f;
+    padding: 10px 20px;
 }
 
 
@@ -64,4 +68,11 @@ h6 {
 
 .comment-form {
     margin: 20px 0;
+}
+
+.btn-comment {
+    border: none;
+    border-radius: 40px;
+    background-color: #1a6a9f;
+    padding: 10px 20px;
 }

@@ -23,7 +23,7 @@ class Navigation extends Component {
     render() {
 
         return (
-            <Navbar bg="light" variant="light" expand="md">
+            <Navbar className="navbar" expand="md">
                 <Navbar.Brand as="div"><Link to="/">
                     <img src="../flechas.svg" width="40" height="40" className="d-inline-block align-top logo-navbar" alt="Logo"/>
                 </Link></Navbar.Brand>

@@ -24,8 +24,16 @@ class RestaurantDetail extends Component {
         return this.restaurantsService.detailRestaurant(id)
     }
 
+    handleNewReview() {
+        this.getRestaurantInfo()
+        .then(response => this.setState({
+            restaurantInfo: response.data
+        }))
+        .catch(err => console.log(err))
+    }
+
     displayReviews = () => {
-        return this.state.restaurantInfo.myReviews.map(review => <ReviewCard key={review._id}{...review}/>)
+        return this.state.restaurantInfo.myReviews.map(review => <ReviewCard key={review._id} newReviewAdded={()=>this.handleNewReview()} {...review}/>)
     }
     
     averageRating = () => {

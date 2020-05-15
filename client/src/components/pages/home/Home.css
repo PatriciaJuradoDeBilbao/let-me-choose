@@ -23,5 +23,15 @@
     text-align: center;
   }
 
+  .btn-choose-home {
+    font-weight: 500;
+    font-size: 2em;
+    padding: 10px 35px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 40px;
+    background-color: #1a6a9f;
+    margin-left: 150px;
+  }
 
 

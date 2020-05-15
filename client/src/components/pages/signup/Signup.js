@@ -55,7 +55,7 @@ class Signup extends Component {
                 <Row>
                     <Col md={{ span: 6, offset: 2 }}>
 
-                        <h3>Registro de usuario</h3>
+                        <h3 className="title-signup">Registro de usuario</h3>
                         <hr></hr>
                         <Form onSubmit={this.handleSubmit}>
 
@@ -80,7 +80,7 @@ class Signup extends Component {
                             </Form.Group>
 
 
-                            <Button variant="info" className="btn btn-block" type="submit">Registrarme</Button>
+                            <Button variant="info" className="btn btn-block btn-signup" type="submit">Registrarme</Button>
                             <p
                                 className='error-message'
                                 style={{ display: this.state.errorMessage ? 'block' : 'none' }}

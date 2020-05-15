@@ -76,6 +76,8 @@ import Signup from './pages/signup/Signup'
 import Login from './pages/login/Login'
 import Profile from './pages/profile/Profile'
 import AuthService from './../service/auth.service'
+import RestaurantForm from './pages/Restaurant-form/RestaurantForm'
+
 //import Footer from './ui/footer/Footer'
 
 
@@ -112,6 +114,7 @@ class App extends Component {
           <Route path="/restaurants" exact render={() => <RestaurantList /> } />
           <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail {...props}/>} />
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
+          <Route path="/restaurants/new" exact render={() => <RestaurantForm />} />
         </Switch>
       </main>
 

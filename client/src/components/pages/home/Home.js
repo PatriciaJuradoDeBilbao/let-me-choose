@@ -14,8 +14,8 @@ const Home = () => {
             <h1 className="text-home">Let me ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se </h1>
             <p>Para todos los indecisos a la hora de comer fuera</p>
             <Row>
-                <Col md={{span: 6, offset: 5}}>
-                <Link to="/restaurants" className="btn btn-dark btn-choose">Ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se</Link>
+                <Col md={{span: 6, offset: 3}}>
+                <Link to="/restaurants" className="btn btn-info btn-choose-home">Ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se</Link>
                 </Col>
             </Row>
         </Container>

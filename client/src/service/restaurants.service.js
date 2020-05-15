@@ -11,5 +11,6 @@ export default class services {
     listRestaurants = () => this.service.get('/list')
     detailRestaurant = restaurantId => this.service.get(`/detail/${restaurantId}`)
     addRestaurant = theRestaurant => this.service.post('/new', theRestaurant)
+    addComment = theComment => this.service.post('/newComment', theComment)
 }
 

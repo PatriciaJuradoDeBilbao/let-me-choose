@@ -40,4 +40,21 @@ router.get('/:id/delete', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
+
+// add comment
+router.post('/newComment', (req, res, next) => {
+    Comment.create(req.body)
+        .then(data => res.json(data))
+        .catch(err => console.log(err))
+})
+
+// delete comment 
+router.get('comment/:id/delete', (req, res, next) => {
+    Comment.findByIdAndRemove(req.params.id, {new: true})
+        .then(data => res.json(data))
+        .catch(err => console.log(err))
+})
+
+
+
 module.exports = router

@@ -6,17 +6,20 @@ import Card from 'react-bootstrap/Card'
 const RestaurantCard = props => {
 
     return (
+        <>
         <Col lg={3} md={4}>
-            <Card as="article">
+            <Card as="article" className="shadow-sm mb-5 bg-white rounded">
                 <Card.Img variant="top" src={props.imageUrl} />
                 <Card.Body>
                     <Card.Title as="h3">{props.name}</Card.Title>
                     <Card.Title>Comida {props.type}</Card.Title>
-                    <Card.Title as="h6">{props.price}</Card.Title>
-                    <Link to={`restaurants/detail/${props._id}`} className="btn btn-info">Ver detalles</Link>
+                    <Card.Title>{props.price}</Card.Title>
+                    <Link to={`restaurants/detail/${props._id}`} className="btn btn-detail">Ver detalles</Link>
                 </Card.Body>
             </Card>
         </Col>
+
+        </>
     )
 }
 
