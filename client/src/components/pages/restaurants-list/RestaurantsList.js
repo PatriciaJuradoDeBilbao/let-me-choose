@@ -150,11 +150,21 @@ class RestaurantList extends Component {
                         </Form.Group>
                     </Form>
                 </Col>
+                <Col md={4}>
+                    <Form>
+                        <Form.Group controlId="exampleForm.SelectCustom">
+                            <Form.Label>Tus listas</Form.Label>
+                            <Form.Control as="select" custom>
+                            <option></option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Form>
+                </Col>
                 </Row>
 
                 <Row>
                     <Col md={{span: 6, offset: 5}}>
-                        <Link to="/{_id}" className="btn btn-dark btn-choose">Ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se</Link>
+                        <Link to="/{_id}" className="btn btn-info btn-choose">Ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se</Link>
                     </Col>
                 </Row>
 

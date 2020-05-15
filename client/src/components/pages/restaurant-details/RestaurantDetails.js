@@ -7,6 +7,7 @@ import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 import ReviewCard from './ReviewCard'
 import './RestaurantDetails.css'
+import ReviewForm from '../Review-form/ReviewForm'
 
 class RestaurantDetail extends Component {
 
@@ -69,13 +70,19 @@ class RestaurantDetail extends Component {
                     <Col md={{span: 8, offset: 1}}>
                         <h5>{myReviews && this.averageRating()}  <img className="img-rating" src="../../../../estrella_rating.svg" alt="Star icon" /></h5>  
                     </Col>
+
+                    <ReviewForm />
+
                     <Col md={{span: 8, offset: 1}}>
                         <hr/>
                         <h3 className="comment-title">Comentarios</h3>
                         <hr/>
                     </Col>
+ 
                     {myReviews && this.displayReviews()}
                 </Row>
+                
+
                 <Link to={`/restaurants`} className="btn btn-info btn-back">Volver atrás</Link>
             </Container>
             </>

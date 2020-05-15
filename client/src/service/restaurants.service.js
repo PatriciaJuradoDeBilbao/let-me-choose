@@ -3,7 +3,7 @@ import axios from 'axios'
 export default class services {
     constructor() {
         this.service = axios.create({
-            baseURL: 'http://localhost:5000/api/restaurants',
+            baseURL: `${process.env.REACT_APP_API_URL}/restaurants`,
             withCredentials: true
         })
     }
@@ -12,3 +12,4 @@ export default class services {
     detailRestaurant = restaurantId => this.service.get(`/detail/${restaurantId}`)
     addRestaurant = theRestaurant => this.service.post('/new', theRestaurant)
 }
+
