@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AuthService from './../../../service/auth.service'
+import FileService from '../../../service/file.service'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -17,11 +18,13 @@ class Signup extends Component {
                 name: '',
                 username: '',
                 email: '',
-                password: ''
+                password: '',
+                avatar: ''
             },
             errorMessage: ''
         }
         this.authService = new AuthService()
+        this.filesService = new FileService()
     }
 
 
@@ -39,13 +42,26 @@ class Signup extends Component {
         this.authService.signup(this.state.loginInfo)
             .then(response => {
                 this.props.setTheUser(response.data)
-                this.props.history.push('/')
+                this.props.history.push('/profile')
             })
             .catch(err => {
                 err.response.status === 400 && this.setState({ errorMessage: err.response.data.message })
             })
     }
 
+    handleFileUpload = e => {
+
+        const uploadData = new FormData()
+        uploadData.append('avatar', e.target.files[0])
+        this.filesService.handleUpload(uploadData)
+        .then(response => {
+            console.log('El archivo ya se ha subido. La URL de cloudinary es: ', response.data.secure_url)
+            this.setState({
+                ...this.state, avatar: response.data.secure_url
+            })
+        })
+        .catch(err => console.log(err))
+    } 
 
     render() {
 
@@ -78,7 +94,10 @@ class Signup extends Component {
                                 <Form.Label>Contraseña</Form.Label>
                                 <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
                             </Form.Group>
-
+                            <Form.Group controlId="avatar">
+                                <Form.Label>Foto de perfil</Form.Label>
+                                <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
+                            </Form.Group>
 
                             <Button variant="info" className="btn btn-block btn-signup" type="submit">Registrarme</Button>
                             <p

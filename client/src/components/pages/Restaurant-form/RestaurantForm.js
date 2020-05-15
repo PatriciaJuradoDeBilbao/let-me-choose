@@ -81,6 +81,7 @@
 
 import React, { Component } from 'react'
 import RestaurantsService from '../../../service/restaurants.service'
+import FileService from '../../../service/file.service'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -99,6 +100,7 @@ class RestaurantForm extends Component {
  
         }
         this.restaurantsService = new RestaurantsService()
+        this.filesService = new FileService()
     }
 
     handleInputChange = e => {
@@ -121,6 +123,20 @@ class RestaurantForm extends Component {
         .catch(err => console.log(err))
     }
 
+    handleFileUpload = e => {
+
+        const uploadData = new FormData()
+        uploadData.append('imageUrl', e.target.files[0])
+        this.filesService.handleUpload(uploadData)
+        .then(response => {
+            console.log('El archivo ya se ha subido. La URL de cloudinary es: ', response.data.secure_url)
+            this.setState({
+                ...this.state, imageUrl: response.data.secure_url
+            })
+        })
+        .catch(err => console.log(err))
+    }   
+
     render() {
 
         return (
@@ -130,11 +146,11 @@ class RestaurantForm extends Component {
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group controlId="imageUrl">
                     <Form.Label>Imagen</Form.Label>
-                    <Form.Control type="text" name="imageUrl" value={this.state.imageUrl} onChange={this.handleInputChange}/>
+                    <Form.Control type="file" name="imageUrl" onChange={this.handleFileUpload}/>
                 </Form.Group>
                 <Form.Group controlId="name">
                     <Form.Label>Nombre</Form.Label>
-                    <Form.Control  name="name" type="text" value={this.state.name} onChange={this.handleInputChange}/>
+                    <Form.Control  name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
                 </Form.Group>
                 <Form.Group controlId="type">
                     <Form.Label>Tipo de comida</Form.Label>
