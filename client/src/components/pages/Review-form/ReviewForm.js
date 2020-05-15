@@ -22,11 +22,14 @@ class ReviewForm extends Component {
             [name]: value
         })
     }
-    
+    finishAction = () => {
+        this.props.refreshReviewList()
+    }
     handleSubmit = e => {
         e.preventDefault()
         this.restaurantService.addComment(this.state)
-            .then(() => this.props.newReviewAdded())
+        console.log(this.finishAction)
+            .then(() => this.finishAction())
             .catch(err => console.log(err))
     }
 

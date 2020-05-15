@@ -8,16 +8,18 @@ a {
     font-size: 1.15em;
     transition: .3s;
     font-weight: 500;
-    color: #1a6b9f;
+    color:white;
     text-decoration: none;
   }
 
   .navbar {
     margin-bottom: 40px;
-    background-color: #4C6E99 ;
+    background-color: #185c8a;
 
   }
-
+.greeting {
+  color: white;
+}
   .navbar-text{
     color: white;
   }

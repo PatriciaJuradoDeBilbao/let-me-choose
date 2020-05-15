@@ -9,6 +9,7 @@ import ReviewCard from './ReviewCard'
 import './RestaurantDetails.css'
 import ReviewForm from '../Review-form/ReviewForm'
 
+
 class RestaurantDetail extends Component {
 
     constructor(props) {
@@ -54,7 +55,6 @@ class RestaurantDetail extends Component {
 
 
     render() {
-        const {name, type, price, direction, imageUrl, myReviews} = this.state.restaurantInfo
         return (
             <>
             <Container as="section">
@@ -64,22 +64,22 @@ class RestaurantDetail extends Component {
                     <Col md={{span: 8, offset: 1}} className="restaurant-info">
                         <Card>
                             <Card.Body>
-                            <Card.Text className="title-card">{name}</Card.Text>
-                            <Card.Text className="text-card">Comida {type}</Card.Text>
-                            <Card.Text className="text-card">{price}</Card.Text>
-                            <Card.Text className="text-card">Dirección: {direction}</Card.Text>
+                            <Card.Text className="title-card">{this.state.restaurantInfo.name}</Card.Text>
+                            <Card.Text className="text-card">Comida {this.state.restaurantInfo.type}</Card.Text>
+                            <Card.Text className="text-card">{this.state.restaurantInfo.price}</Card.Text>
+                            <Card.Text className="text-card">Dirección: {this.state.restaurantInfo.direction}</Card.Text>
                             </Card.Body>
-                            <Card.Img variant="bottom" src={imageUrl} />
+                            <Card.Img variant="bottom" src={this.state.restaurantInfo.imageUrl} />
                         </Card>
                     </Col>
                 </Row>
                 <Row>
                    
                     <Col md={{span: 8, offset: 1}}>
-                        <h5>{myReviews && this.averageRating()}  <img className="img-rating" src="../../../../estrella_rating.svg" alt="Star icon" /></h5>  
+                        <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="../../../../estrella_rating.svg" alt="Star icon" /></h5>  
                     </Col>
 
-                    <ReviewForm />
+                    <ReviewForm  refreshReviewList={this.getRestaurantInfo}/>
 
                     <Col md={{span: 8, offset: 1}}>
                         <hr/>
@@ -87,11 +87,11 @@ class RestaurantDetail extends Component {
                         <hr/>
                     </Col>
  
-                    {myReviews && this.displayReviews()}
+                    {this.state.restaurantInfo.myReviews && this.displayReviews()}
                 </Row>
                 
 
-                <Link to={`/restaurants`} className="btn btn-info btn-back">Volver atrás</Link>
+                <Link to={`/restaurants`} className="btn btn-info btn-back">Volver</Link>
             </Container>
             </>
         )

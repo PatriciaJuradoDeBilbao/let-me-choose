@@ -104,21 +104,28 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import RestaurantCard from './RestaurantCard'
 import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import RestaurantForm from '../Restaurant-form/RestaurantForm'
 
 class RestaurantList extends Component {
 
     constructor() {
         super()
         this.state = {
+            modalShow: false,
             restaurants: []
         }
         this.restaurantsService = new RestaurantsService()
     }
+    
+    showModal = () => this.setState({ modalShow: true})
+    hideModal = () => this.setState({ modalShow: false})
 
     getAllRestaurants = () =>  {
         this.restaurantsService.listRestaurants()
             .then(response => this.setState({restaurants: response.data}))
-        .catch(err => console.log(err))
+            .catch(err => console.log(err))
     }
 
     // randomRestaurant = () => {
@@ -176,6 +183,19 @@ class RestaurantList extends Component {
                     {this.state.restaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)}
 
                 </Row>
+                <Row>
+                    <Col md={{span: 8, offset: 2}} className="add-rest">
+                    <h6>¿Eres el dueño de un restaurante?</h6>
+                        <Button onClick={this.showModal} variant="info" type="submit" className="btn-lg btn-add">Añadir tu restaurante</Button>
+                    </Col>
+                </Row>
+
+
+                <Modal show={this.state.modalShow} onHide={this.hideModal}>
+                    <Modal.Body>
+                        <RestaurantForm hideModalWindow={this.hideModal} refreshRestaurantsList={this.getAllRestaurants} />
+                    </Modal.Body>
+                </Modal>
             </Container>
             </>
         )

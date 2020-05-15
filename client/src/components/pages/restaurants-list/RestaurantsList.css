@@ -36,11 +36,23 @@ h5 {
     border: none;
     border-radius: 40px;
     background-color: #1a6a9f;
-    margin: 100px 0;
+    margin: 80px 0;
     padding: 10px;
   }
 
+.add-rest {
+    margin: 20px 0;
+}
 
+.btn-add {
+    font-weight: 500;
+    font-size: 1.4em;
+    padding: 10px 35px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 40px;
+    background-color: #1a6a9f;
+}
   /* --- RESTAURANT CARD -- */
 
   .btn-detail {

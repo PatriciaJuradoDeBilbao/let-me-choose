@@ -84,17 +84,19 @@ import RestaurantsService from '../../../service/restaurants.service'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
+import './RestaurantForm.css'
 
 class RestaurantForm extends Component {
 
     constructor(props) {
         super(props)
         this.state = { 
+            imageUrl: '',
             name: '',
             type: '',
             price: '',
-            imageUrl: ''
+            direction: ''
+ 
         }
         this.restaurantsService = new RestaurantsService()
     }
@@ -107,20 +109,31 @@ class RestaurantForm extends Component {
         })
     }
 
+    finishAction = () => {
+        this.props.hideModalWindow()
+        this.props.refreshRestaurantsList()
+    }
+
     handleSubmit = e => {
         e.preventDefault()
         this.restaurantsService.addRestaurant(this.state)
+        .then(() => this.finishAction())
+        .catch(err => console.log(err))
     }
 
     render() {
 
         return (
             <>
-        <Container>
-            <h1>Añade tu restaurante</h1>
+        <Container className="restaurant-form">
+            <h1 className="title">Añade tu restaurante</h1>
             <Form onSubmit={this.handleSubmit}>
+                <Form.Group controlId="imageUrl">
+                    <Form.Label>Imagen</Form.Label>
+                    <Form.Control type="text" name="imageUrl" value={this.state.imageUrl} onChange={this.handleInputChange}/>
+                </Form.Group>
                 <Form.Group controlId="name">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Nombre</Form.Label>
                     <Form.Control  name="name" type="text" value={this.state.name} onChange={this.handleInputChange}/>
                 </Form.Group>
                 <Form.Group controlId="type">
@@ -147,11 +160,11 @@ class RestaurantForm extends Component {
                     <option>Muy caro(€€€€)</option>
                     </Form.Control>
                 </Form.Group>
-                <Form.Group controlId="imageUrl">
-                    <Form.Label>Imagen(URL)</Form.Label>
-                    <Form.Control type="text" name="imageUrl" value={this.state.imageUrl} onChange={this.handleInputChange}/>
+                <Form.Group controlId="direction">
+                    <Form.Label>Dirección</Form.Label>
+                    <Form.Control  name="direction" type="text" value={this.state.direction} onChange={this.handleInputChange}/>
                 </Form.Group>
-                <Button variant="primary" type="submit">Submit</Button>
+                <Button variant="primary" type="submit" className="btn btn-block btn-login">Añadir</Button>
             </Form>
         </Container>
             </>

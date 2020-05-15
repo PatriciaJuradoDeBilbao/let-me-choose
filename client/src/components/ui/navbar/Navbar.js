@@ -49,9 +49,8 @@ class Navigation extends Component {
                         }
 
                     </Nav>
-                    <Navbar.Text className="ml-auto"> Hola, {this.props.loggedInUser ? this.props.loggedInUser.username : 'invitad@'}</Navbar.Text>
+                    <Navbar.Text className="ml-auto greeting"> Hola, {this.props.loggedInUser ? this.props.loggedInUser.username : 'invitad@'}</Navbar.Text>
                 </Navbar.Collapse>
-
             </Navbar>
         )
     }
