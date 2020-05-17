@@ -51,7 +51,7 @@ router.post('/new', (req, res, next) => {
 })
 
 // delete
-router.get('/:id/delete', (req, res, next) => {
+router.get('/delete/:id', (req, res, next) => {
     Restaurant.findByIdAndRemove(req.params.id)
         .then(data => res.json(data))
         .catch(err => new Error(err))

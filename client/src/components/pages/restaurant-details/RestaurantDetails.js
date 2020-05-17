@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import ReviewCard from './ReviewCard'
 import './RestaurantDetails.css'
@@ -32,7 +33,13 @@ class RestaurantDetail extends Component {
         }))
         .catch(err => console.log(err))
     }
-
+    
+    handleDelete = id => {
+        this.restaurantsService.deleteRestaurant(id)
+        .then(() => this.props.history.push('/restaurants'))
+        .catch(err => console.log(err))
+    }
+    
     displayReviews = () => {
         return this.state.restaurantInfo.myReviews.map(review => <ReviewCard key={review._id} newReviewAdded={()=>this.handleNewReview()} {...review}/>)
     }
@@ -50,7 +57,6 @@ class RestaurantDetail extends Component {
         }))
         .catch(err => console.log(err))
     }
-
 
 
 
@@ -76,9 +82,21 @@ class RestaurantDetail extends Component {
                 <Row>
                    
                     <Col md={{span: 3, offset: 1}}>
-                        <img className="icon-list" src="/images/heart-icon.svg" alt="Heart icon"/>
-                        <img className="icon-list" src="/images/wish-icon.svg" alt="Marker icon"/>
-                        <img className="icon-list" src="/images/delete-icon.svg" alt="Delete icon"/>
+                        
+                        <Button >
+                            <img className="icon-list" src="/images/heart-icon.svg" alt="Heart icon"/>
+                       </Button>
+                       
+                        <Button >
+                            <img className="icon-list" src="/images/wish-icon.svg" alt="Marker icon"/>
+                       </Button>
+                       
+
+                        <Button onClick={() => this.handleDelete(this.state.restaurantInfo._id)}>
+                            <img  className="icon-list" src="/images/delete-icon.svg" alt="Delete icon"/>
+                        </Button>
+
+                    
                     </Col>
                     <Col md={{span: 4, offset: 1}}>
                         <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></h5>  

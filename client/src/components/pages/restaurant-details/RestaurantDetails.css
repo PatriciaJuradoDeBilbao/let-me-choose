@@ -16,9 +16,16 @@
 .icon-list {
     margin: 10px 5px 0 10px;
     width: 30px;
+    background-color: none;
+    border: none;
+    cursor: pointer;
 }
 
 
+.btn-action {
+    background-color: none;
+    border: none;
+}
 
 
 

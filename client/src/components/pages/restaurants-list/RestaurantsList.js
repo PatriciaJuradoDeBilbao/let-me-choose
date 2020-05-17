@@ -11,7 +11,7 @@ import Form from 'react-bootstrap/Form'
 import { Link } from 'react-router-dom'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import RandomRestaurant from './RandomRestaurant'
+// import RandomRestaurant from './RandomRestaurant'
 
 
 
@@ -53,6 +53,7 @@ class RestaurantList extends Component {
         this.getAllRestaurants()
     }
 
+
     finishRestaurantPost = () => {
         this.handleModal(false)
         this.getAllRestaurants()
@@ -74,16 +75,18 @@ class RestaurantList extends Component {
 
 
     randomRestaurant = () => {
-        const random = Math.floor(Math.random() * this.state.restaurants.length)
-        const choice = this.state.restaurants[random]
-        console.log(choice)
-        // this.setState({randomChoice: choice})
-        // console.log(choice)
-        // this.restaurantsService.listRestaurants.map(Math.floor(Math.random() * this.restaurants.length))
+        console.log(this.state.restaurants)
+            const random = Math.floor(Math.random() * this.state.restaurants.length)
+            const choice = this.state.restaurants[random]
+            // console.log(this.state.restaurants[random])
+            this.setState({randomChoice: [{...choice}]})
+            //console.log(this.state.randomChoice)
+
+
     }
 
     render() {
-        this.randomRestaurant()
+
         return (
             <>
             {/* <RandomRestaurant restaurants={this.state.restaurants} /> */}
@@ -138,8 +141,19 @@ class RestaurantList extends Component {
                 </Row>
 
                 <Row>
-                    <Col md={{span: 8, offset: 2}}>
-                        <Link to='/' className="btn btn-info btn-choose btn-block">Ch<img className="img-logo" src="/images/flechas.svg" alt="logo" />se  </Link>
+                    <Col md={{span: 8, offset: 2}}> 
+
+                        {this.state.restaurants.length > 0
+                        
+                        ?
+
+                       <Link to={`restaurants/choice/${this.state.restaurants._id}`}>
+                       <Button  onClick={() => this.randomRestaurant()} className="btn btn-info btn-choose btn-block">Ch<img className="img-logo" src="/images/flechas.svg" alt="logo" />se </Button>
+                       </Link>
+
+                       : 
+                            ''
+                        }
                     </Col>
                 </Row>
 
@@ -149,10 +163,8 @@ class RestaurantList extends Component {
                          restaurant.type.includes(this.state.typeValue))
                         .filter(restaurant => restaurant.price.includes(this.state.priceValue))
                          .map(elm => <RestaurantCard key={elm._id} {...elm} />)}
-
-                    
-
                 </Row>
+                
                 <Row>
                     <Col md={{span: 8, offset: 2}} className="add-rest">
                     <h6>¿Eres el dueño de un restaurante?</h6>
