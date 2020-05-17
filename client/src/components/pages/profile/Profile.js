@@ -1,38 +1,31 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import './Profile.css'
 
 const Profile = props => {
-console.log(props)
     return (
         <>
-        <Container as="section">
-            <Row as="article">
-                <Col md={{span: 8, offset:1}}>
-                <h1><img className="avatar-profile" src={props.loggedInUser.avatar} alt={props.loggedInUser.name}/> ¡Bienvenid@, {props.loggedInUser.username}!</h1>
+        <Container as="section" className="profile">
+            <Row as="article" >
+                <Col md className="user">
+                <img className="avatar-profile" src={props.loggedInUser.avatar} alt={props.loggedInUser.name}/>
+                <h1 className="title-profile"> ¡Hola, {props.loggedInUser.username}!</h1>
                 </Col>
             </Row>
-                    
-            <Row as="article">
-                <Col md={{span: 8, offset:1}}>
-                    <h1>Favoritos</h1>
-                    <hr/>
-                </Col>
-                <Col md={{span: 8, offset:1}}>
-                    <h4>{props.loggedInUser.myFavs.map(favs => <p>{favs.name}</p>)}</h4>
-                </Col>
-            </Row>
+            <Row as="article" >
+                <Col md={6} className="favs">
+                    <h1 className="title-profile">Mis Favoritos<img className="icon-list-profile" src="/images/heart-icon.svg" alt="Heart icon"/></h1>
+                    {props.loggedInUser.myFavs.map(favs => <p className="rest"><Link to={`restaurants/detail/${props._id}`}> {favs.name}</Link> </p>)}  
 
-            <Row as="article">
-                <Col md={{span: 8, offset:1}}>
-                    <h1>Quiero ir</h1>
-                    <hr/>
                 </Col>
+   
+                <Col md={6} className="wish">
+                    <h1 className="title-profile">Mi WishList<img className="icon-list-profile" src="/images/wish-icon.svg" alt="Marker icon"/></h1>
 
-                <Col md={{span: 8, offset:1}}>
-                    <h4>{props.loggedInUser.myWishList.map(wish => <p>{wish.name}</p>)}</h4>
+                    {props.loggedInUser.myWishList.map(wish => <p className="rest"><Link to={`restaurants/detail/${props._id}`}> {wish.name}</Link> </p>)}
                 </Col>
             </Row>
         </Container>

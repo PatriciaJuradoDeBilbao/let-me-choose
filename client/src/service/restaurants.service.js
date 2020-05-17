@@ -12,5 +12,6 @@ export default class services {
     detailRestaurant = restaurantId => this.service.get(`/detail/${restaurantId}`)
     addRestaurant = theRestaurant => this.service.post('/new', theRestaurant)
     addComment = theComment => this.service.post('/newComment', theComment)
+    randomRestaurant = restaurantId => this.service.get(`/choice/${restaurantId}`)
 }
 

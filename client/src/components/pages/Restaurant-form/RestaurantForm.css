@@ -1,8 +1,7 @@
 .restaurant-form {
-    margin: 20px 0;
+    margin-bottom: 20px;
 
 }
-
 
 .title {
     font-size: 2em;
@@ -10,4 +9,22 @@
     margin-bottom: 20px;
     text-align: center;
 
+}
+
+
+.btn-close {
+    margin: 0 0 0 410px; 
+    background-color: transparent;
+    border: none;
+}
+
+.btn-close:hover {
+    margin: 0 0 0 410px; 
+    background-color: transparent;
+    border: none;
+}
+
+
+.btn-close img {
+    width: 20px;
 }

@@ -28,7 +28,6 @@ class ReviewForm extends Component {
     handleSubmit = e => {
         e.preventDefault()
         this.restaurantService.addComment(this.state)
-        console.log(this.finishAction)
             .then(() => this.finishAction())
             .catch(err => console.log(err))
     }
@@ -43,7 +42,7 @@ class ReviewForm extends Component {
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label>Escoge una puntuación del 1 al 5</Form.Label>
-                        <Form.Control as="select" name="rating" value={this.state.crating} onChange={this.handleInputChange}>
+                        <Form.Control as="select" name="rating" value={this.state.rating} onChange={this.handleInputChange}>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>

@@ -15,6 +15,7 @@ a {
   .navbar {
     margin-bottom: 40px;
     background-color: #185c8a;
+    padding: 15px;
 
   }
 .greeting {
@@ -23,7 +24,9 @@ a {
   .navbar-text{
     color: white;
   }
-  
+  .logo-navbar {
+    margin-left: 20px;
+  }
   .logo-navbar:hover {
     transition: 1s;
     -webkit-transition: 1s;

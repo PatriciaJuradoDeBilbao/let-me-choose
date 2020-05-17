@@ -25,7 +25,7 @@ class Navigation extends Component {
         return (
             <Navbar className="navbar" expand="md">
                 <Navbar.Brand as="div"><Link to="/">
-                    <img src="../flechas.svg" width="40" height="40" className="d-inline-block align-top logo-navbar" alt="Logo"/>
+                    <img src="/images/flechas.svg" width="40" height="40" className="d-inline-block align-top logo-navbar" alt="Logo"/>
                 </Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -51,6 +51,7 @@ class Navigation extends Component {
                     </Nav>
                     <Navbar.Text className="ml-auto greeting"> Hola, {this.props.loggedInUser ? this.props.loggedInUser.username : 'invitad@'}</Navbar.Text>
                 </Navbar.Collapse>
+
             </Navbar>
         )
     }

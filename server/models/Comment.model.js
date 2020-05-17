@@ -9,7 +9,7 @@ const commentSchema = new Schema({
         enum: [1, 2, 3, 4, 5]
     },
     creator: {type: Schema.Types.ObjectId, ref: 'User'},
-    // myRestaurant: {type: Schema.Types.ObjectId, ref: 'Restaurant'}
+    myRestaurant: {type: Schema.Types.ObjectId, ref: 'Restaurant'}
 }, {
     timestamps: true
 })

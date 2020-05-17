@@ -14,7 +14,7 @@ const RestaurantCard = props => {
                     <Card.Title as="h3">{props.name}</Card.Title>
                     <Card.Title>Comida {props.type}</Card.Title>
                     <Card.Title>{props.price}</Card.Title>
-                    <Link to={`restaurants/detail/${props._id}`} className="btn btn-detail">Ver detalles</Link>
+                    <Link to={`restaurants/detail/${props._id}`} className="btn btn-detail">Ver detalles</Link> 
                 </Card.Body>
             </Card>
         </Col>

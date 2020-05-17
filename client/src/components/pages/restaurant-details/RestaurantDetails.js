@@ -75,8 +75,13 @@ class RestaurantDetail extends Component {
                 </Row>
                 <Row>
                    
-                    <Col md={{span: 8, offset: 1}}>
-                        <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="../../../../estrella_rating.svg" alt="Star icon" /></h5>  
+                    <Col md={{span: 3, offset: 1}}>
+                        <img className="icon-list" src="/images/heart-icon.svg" alt="Heart icon"/>
+                        <img className="icon-list" src="/images/wish-icon.svg" alt="Marker icon"/>
+                        <img className="icon-list" src="/images/delete-icon.svg" alt="Delete icon"/>
+                    </Col>
+                    <Col md={{span: 4, offset: 1}}>
+                        <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></h5>  
                     </Col>
 
                     <ReviewForm  refreshReviewList={this.getRestaurantInfo}/>

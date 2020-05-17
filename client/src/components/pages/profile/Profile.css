@@ -1,5 +1,58 @@
+.profile {
+    margin-top: 100px;
+}
 .avatar-profile {
     border-radius: 100%;
-    justify-content: center;
-    width: 200px;
+    display: block;
+    margin: auto;
+    width: 120px;
+    margin-top: 30px;
+}
+
+.title-profile {
+    margin: 20px 0;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-align: center;
+}
+
+.user {
+    margin-bottom: 20px;
+    min-height: 250px;
+    border-radius: 5px;
+    background-color: #ddd8d8;
+}
+
+.favs {
+    padding: 15px;
+    min-height: 250px;
+
+}
+
+.wish {
+    padding: 15px;
+    min-height: 250px;
+}
+
+.rest {
+    margin-left: 5px;
+    text-align: center;
+}
+
+.rest a  {
+    color: black;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.rest a:hover {
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: .3s;
+    color: #1a6a9f;
+}
+
+.icon-list-profile {
+    width: 40px;
+    margin: 0 10px;   
 }

@@ -1,37 +1,35 @@
 .home {
-  padding: 100px;
+  margin: 100px;
 }
 
 .text-home {
-  font-size: 4em;
-  font-weight: 600;
+  margin-top: 50px;
+  font-size: 5em;
+  font-weight: 800;
   color: #1a6b9f;
-  text-align: center;
+  text-transform: uppercase;
   }
   
-  .img-logo {
-    width: 45px;
-  }
-
-  .img-logo-btn {
-    width: 45px;
-  }  
 
   p {
     font-weight: 400;
-    font-size: 1.6em;
+    font-size: 1.4em;
     text-align: center;
+    text-align: left;
   }
-
+.text-bold {
+  font-weight: 500;
+}
   .btn-choose-home {
     font-weight: 500;
-    font-size: 2em;
+    font-size: 1.4em;
     padding: 10px 35px;
     margin: 15px 0;
     border: none;
     border-radius: 40px;
     background-color: #1a6a9f;
-    margin-left: 150px;
-  }
+    text-transform: uppercase;
+    letter-spacing: 2px;
 
+  }
 

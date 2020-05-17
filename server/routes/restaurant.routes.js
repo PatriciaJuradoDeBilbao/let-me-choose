@@ -3,6 +3,7 @@ const router = express.Router()
 
 const Restaurant = require('../models/Restaurant.model')
 const Comment = require('../models/Comment.model')
+const User = require('../models/user.model')
 
 // list all 
 router.get('/list', (req, res, next) => {
@@ -13,6 +14,22 @@ router.get('/list', (req, res, next) => {
 
 // detail
 router.get('/detail/:id', (req, res, next) => {
+    Restaurant.findById(req.params.id)
+    .populate({
+        path: 'myReviews',
+        model: 'Comment',
+        populate: {
+            path: 'creator',
+            model: 'User'
+        }
+    })
+    .then(data => res.json(data))
+    .catch(err => new Error(err))
+})
+
+
+//  choice
+router.get('/choice/:id', (req, res, next) => {
     Restaurant.findById(req.params.id)
     .populate({
         path: 'myReviews',
@@ -44,6 +61,8 @@ router.get('/:id/delete', (req, res, next) => {
 // add comment
 router.post('/newComment', (req, res, next) => {
     Comment.create(req.body)
+    // console.log(req.body)
+    // .populate('creator')
         .then(data => res.json(data))
         .catch(err => new Error(err))
 })
@@ -54,6 +73,8 @@ router.get('comment/:id/delete', (req, res, next) => {
         .then(data => res.json(data))
         .catch(err => new Error(err))
 })
+
+
 
 
 

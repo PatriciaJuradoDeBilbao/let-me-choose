@@ -1,8 +1,5 @@
-
 import React from 'react'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
@@ -10,15 +7,13 @@ const Home = () => {
 
     return (
         <>
-        <Container className="home">
-            <h1 className="text-home">Let me ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se </h1>
-            <p>Para todos los indecisos a la hora de comer fuera</p>
-            <Row>
-                <Col md={{span: 6, offset: 3}}>
-                <Link to="/restaurants" className="btn btn-info btn-choose-home">Ch<img className="img-logo" src="../flechas.svg" alt="logo"/>se</Link>
-                </Col>
-            </Row>
+        <Container  as="section" className="home" fluid>
+            <h1 className="text-home">Let me choose </h1>
+            <p>Si eres de los que pasas horas buscando un lugar donde comer fuera y nunca te decides...</p>
+            <p className="text-bold" >¡Estás en el lugar correcto!</p>
+            <Link to="/restaurants" className="btn btn-info btn-choose-home">Conoce más</Link>
         </Container>
+        
         </>
     )
 }
