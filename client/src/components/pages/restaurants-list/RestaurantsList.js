@@ -26,7 +26,9 @@ class RestaurantList extends Component {
                 text: ''
             },
             restaurants: [],
-            typeValue: ''
+            typeValue: '',
+            priceValue: '',
+            randomChoice: {}
         }
         this.restaurantsService = new RestaurantsService()
     }
@@ -64,15 +66,27 @@ class RestaurantList extends Component {
 
     }
 
-    // filterByType = () => {
-    //     this.state.restaurants.filter(restaurant => restaurant.type.includes(this.state.typeValue)).map(item => )
-    // }
+    handleFilterByPrice = e => {
+        const value = e.currentTarget.value
+        console.log(value)
+        this.setState({priceValue: value})
+    }
+
+
+    randomRestaurant = () => {
+        const random = Math.floor(Math.random() * this.state.restaurants.length)
+        const choice = this.state.restaurants[random]
+        console.log(choice)
+        // this.setState({randomChoice: choice})
+        // console.log(choice)
+        // this.restaurantsService.listRestaurants.map(Math.floor(Math.random() * this.restaurants.length))
+    }
 
     render() {
-        
+        this.randomRestaurant()
         return (
             <>
-            <RandomRestaurant restaurants={this.state.restaurants} />
+            {/* <RandomRestaurant restaurants={this.state.restaurants} /> */}
 
 
             <Container as="section"> 
@@ -82,7 +96,7 @@ class RestaurantList extends Component {
                         <Form.Group controlId="exampleForm.SelectCustom">
                             <Form.Label>Elige por tipo de comida</Form.Label>
                             <Form.Control onChange={this.handleFilterByType} as="select" custom>
-                                <option >Escoge un tipo de comida</option>
+                                <option >Elige un tipo de comida</option>
                                 <option value="Italiana">Italiana</option>
                                 <option value="Asiática">Asiática</option>
                                 <option value="Venezolana">Venezolana</option>
@@ -101,11 +115,12 @@ class RestaurantList extends Component {
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
                             <Form.Label>Elige por rango de precio</Form.Label>
-                            <Form.Control as="select" custom>
-                                <option>Asequible(€)</option>
-                                <option>Moderado(€€)</option>
-                                <option>Caro(€€€)</option>
-                                <option>Muy caro(€€€€)</option>
+                            <Form.Control onChange={this.handleFilterByPrice} as="select" custom>
+                                <option>Elige un rango de precio</option>
+                                <option value="Asequible(€)">Asequible(€)</option>
+                                <option value="Moderado(€€)">Moderado(€€)</option>
+                                <option value="Caro(€€€)">Caro(€€€)</option>
+                                <option value="Muy caro(€€€€)">Muy caro(€€€€)</option>
                             </Form.Control>
                         </Form.Group>
                     </Form>
@@ -124,13 +139,17 @@ class RestaurantList extends Component {
 
                 <Row>
                     <Col md={{span: 8, offset: 2}}>
-                        <Link to={`restaurants/choice`} className="btn btn-info btn-choose btn-block">Ch<img className="img-logo" src="/images/flechas.svg" alt="logo" />se  </Link>
+                        <Link to='/' className="btn btn-info btn-choose btn-block">Ch<img className="img-logo" src="/images/flechas.svg" alt="logo" />se  </Link>
                     </Col>
                 </Row>
 
                 <Row className="restaurants-list">
-                    {this.state.restaurants.filter(restaurant => restaurant.type.includes(this.state.typeValue)).map(elm => <RestaurantCard key={elm._id} {...elm} />)}
-                    {/* {this.state.restaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)} */}
+                    {this.state.restaurants
+                        .filter(restaurant =>
+                         restaurant.type.includes(this.state.typeValue))
+                        .filter(restaurant => restaurant.price.includes(this.state.priceValue))
+                         .map(elm => <RestaurantCard key={elm._id} {...elm} />)}
+
                     
 
                 </Row>
