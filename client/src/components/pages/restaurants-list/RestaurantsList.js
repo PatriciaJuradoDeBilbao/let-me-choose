@@ -11,6 +11,7 @@ import Form from 'react-bootstrap/Form'
 import { Link } from 'react-router-dom'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import RandomRestaurant from './RandomRestaurant'
 
 
 
@@ -24,7 +25,8 @@ class RestaurantList extends Component {
                 show: false,
                 text: ''
             },
-            restaurants: []
+            restaurants: [],
+            typeValue: ''
         }
         this.restaurantsService = new RestaurantsService()
     }
@@ -45,10 +47,6 @@ class RestaurantList extends Component {
     }
 
 
-    // randomRestaurant = () => {
-    //     this.restaurantsService.listRestaurants.map(Math.floor(Math.random() * this.restaurants.length))
-    // }
-
     componentDidMount = () => {
         this.getAllRestaurants()
     }
@@ -59,26 +57,42 @@ class RestaurantList extends Component {
         this.handleToast(true, 'Restaurante añadido correctamente')
     }
 
+    handleFilterByType = e => {
+        const value = e.currentTarget.value
+        console.log(value)
+        this.setState({typeValue: value})
+
+    }
+
+    // filterByType = () => {
+    //     this.state.restaurants.filter(restaurant => restaurant.type.includes(this.state.typeValue)).map(item => )
+    // }
+
     render() {
+        
         return (
             <>
+            <RandomRestaurant restaurants={this.state.restaurants} />
+
+
             <Container as="section"> 
                 <Row className="restaurants-filter">
                 <Col md={4}>
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
                             <Form.Label>Elige por tipo de comida</Form.Label>
-                            <Form.Control as="select" custom>
-                                <option>Italiana</option>
-                                <option>Asiática</option>
-                                <option>Venezolana</option>
-                                <option>India</option>
-                                <option>Mexicana</option>
-                                <option>Mediterránea</option>
-                                <option>Saludable</option>
-                                <option>Árabe</option>
-                                <option>Americana</option>
-                                <option>Vegetariana</option>
+                            <Form.Control onChange={this.handleFilterByType} as="select" custom>
+                                <option >Escoge un tipo de comida</option>
+                                <option value="Italiana">Italiana</option>
+                                <option value="Asiática">Asiática</option>
+                                <option value="Venezolana">Venezolana</option>
+                                <option value="India">India</option>
+                                <option value="Mexicana">Mexicana</option>
+                                <option value="Mediterránea">Mediterránea</option>
+                                <option value="Saludable">Saludable</option>
+                                <option value="Árabe">Árabe</option>
+                                <option value="Americana">Americana</option>
+                                <option value="Vegetariana">Vegetariana</option>
                             </Form.Control>
                         </Form.Group>
                     </Form>
@@ -115,7 +129,9 @@ class RestaurantList extends Component {
                 </Row>
 
                 <Row className="restaurants-list">
-                    {this.state.restaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)}
+                    {this.state.restaurants.filter(restaurant => restaurant.type.includes(this.state.typeValue)).map(elm => <RestaurantCard key={elm._id} {...elm} />)}
+                    {/* {this.state.restaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)} */}
+                    
 
                 </Row>
                 <Row>
@@ -138,6 +154,7 @@ class RestaurantList extends Component {
                     <Toast.Body>{this.state.toast.text}</Toast.Body>
                 </Toast>
 
+                
             </Container>
             </>
         )
