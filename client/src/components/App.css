@@ -46,18 +46,6 @@ h1, h2, h3, h4, strong {
 }
 
 
-
-
-
-
-.toast {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  z-index: 99999;
-  width: 350px;
-}
-
 .error-message {
   margin: 10px 0;
   background: red;

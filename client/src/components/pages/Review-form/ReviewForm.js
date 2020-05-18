@@ -10,7 +10,8 @@ class ReviewForm extends Component {
         this.state = {
             content: '',
             rating: '',
-            // creator: this.props.loggedInUser._id
+            myRestaurant: ''
+
         }
         this.restaurantService = new restaurantService()
     }
@@ -23,21 +24,22 @@ class ReviewForm extends Component {
             [name]: value
         })
     }
-    finishAction = () => {
-        this.props.refreshReviewList()
-    }
+
     handleSubmit = e => {
         e.preventDefault()
-        this.restaurantService.addComment(this.state)
-            .then(() => this.finishAction())
+        this.restaurantService.addComment({...this.state, myRestaurant: this.props.restaurantID})
+            .then(() => this.props.refreshReviewList())
             .catch(err => console.log(err))
     }
+
+
 
     render() {
         return (
             <>
             <Col md={{span: 8, offset: 1}}>
                 <Form className="comment-form" onSubmit={this.handleSubmit}>
+                    {this.state.creator}
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Control placeholder="Escribe tu comentario aquí" as="textarea" rows="3" name="content" value={this.state.content} onChange={this.handleInputChange} />
                     </Form.Group>

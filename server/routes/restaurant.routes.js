@@ -14,7 +14,7 @@ router.get('/list', (req, res, next) => {
 })
 
 // detail
-router.get('/detail/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+router.get('/detail/:id', (req, res, next) => {
     Restaurant.findById(req.params.id)
     .populate({
         path: 'myReviews',
@@ -56,15 +56,21 @@ router.post('/edit/:id', ensureLogin.ensureLoggedIn(), (req,res,next) => {
 
 // add 
 router.post('/newComment', (req, res, next) => {
-  const {rating, content} = req.body
+  const {rating, content, myRestaurant} = req.body
     const newComment = {
-       rating,
-       content,
-        creator: req.user._id
+        rating,
+        content,
+        creator: req.user._id,
+        myRestaurant,
     }
     console.log(newComment)
     Comment.create(newComment)
-        .then(data => res.json(data))
+        .then(createdComment => {
+            console.log("creado el comentario")
+            return Restaurant.findByIdAndUpdate(myRestaurant, {$push: {myReviews: createdComment._id}},{new:true})
+
+        })
+        .then(data=> res.json(data))
         .catch(err => next(new Error(err)))
 })
 

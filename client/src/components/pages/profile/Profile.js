@@ -18,7 +18,7 @@ const Profile = props => {
             <Row as="article" >
                 <Col md={6} className="favs">
                     <h1 className="title-profile">Mis Favoritos<img className="icon-list-profile" src="/images/heart-icon.svg" alt="Heart icon"/></h1>
-                    {props.loggedInUser.myFavs.map(favs => <p className="rest"><Link to={`restaurants/detail/${props._id}`}> {favs.name}</Link> </p>)}  
+                    {props.loggedInUser.myFavs.map(favs => <p className="rest"><Link to={`restaurants/detail/${favs._id}`}> {favs.name}</Link> </p>)}  
 
                 </Col>
    

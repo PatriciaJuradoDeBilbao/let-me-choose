@@ -22,17 +22,15 @@ class RestaurantDetail extends Component {
     }
 
     getRestaurantInfo() {
+        console.log("llamada!")
         const id = this.props.match.params.restaurantId
-        return this.restaurantsService.detailRestaurant(id)
-    }
-
-    handleNewReview() {
-        this.getRestaurantInfo()
-        .then(response => this.setState({
-            restaurantInfo: response.data
-        }))
+        this.restaurantsService.detailRestaurant(id)
+        .then(info=> {
+            console.log(info.data)
+            this.setState({restaurantInfo: info.data})})
         .catch(err => console.log(err))
     }
+
     
     handleDelete = id => {
         this.restaurantsService.deleteRestaurant(id)
@@ -41,7 +39,7 @@ class RestaurantDetail extends Component {
     }
     
     displayReviews = () => {
-        return this.state.restaurantInfo.myReviews.map(review => <ReviewCard key={review._id} newReviewAdded={()=>this.handleNewReview()} {...review}/>)
+        return this.state.restaurantInfo.myReviews.reverse().map(review => <ReviewCard key={review._id} newReviewAdded={()=>this.handleNewReview()} {...review}/>)
     }
     
     averageRating = () => {
@@ -52,15 +50,12 @@ class RestaurantDetail extends Component {
     
     componentDidMount = () => {
         this.getRestaurantInfo()
-        .then(response => this.setState({
-            restaurantInfo: response.data
-        }))
-        .catch(err => console.log(err))
     }
 
 
 
     render() {
+       
         return (
             <>
             <Container as="section">
@@ -80,14 +75,14 @@ class RestaurantDetail extends Component {
                     </Col>
                 </Row>
                 <Row>
-                   
+                {this.props.loggedInUser &&
                     <Col md={{span: 3, offset: 1}}>
                         
-                        <Button >
+                        <Button className="icons" >
                             <img className="icon-list" src="/images/heart-icon.svg" alt="Heart icon"/>
                        </Button>
                        
-                        <Button >
+                        <Button className="icons" >
                             <img className="icon-list" src="/images/wish-icon.svg" alt="Marker icon"/>
                        </Button>
                        
@@ -98,11 +93,11 @@ class RestaurantDetail extends Component {
 
                     
                     </Col>
+                }
                     <Col md={{span: 4, offset: 1}}>
                         <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></h5>  
                     </Col>
-
-                    <ReviewForm  refreshReviewList={this.getRestaurantInfo}/>
+                    {this.props.loggedInUser &&  <ReviewForm restaurantID={this.state.restaurantInfo._id} refreshReviewList={()=>this.getRestaurantInfo()}/>}
 
                     <Col md={{span: 8, offset: 1}}>
                         <hr/>

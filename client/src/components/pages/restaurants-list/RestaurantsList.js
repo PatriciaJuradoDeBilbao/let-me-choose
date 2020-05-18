@@ -61,7 +61,6 @@ class RestaurantList extends Component {
 
     handleFilterByType = e => {
         const value = e.currentTarget.value
-        console.log(value)
         this.setState({typeValue: value}, ()=>{
             this.filterSearch()
         })
@@ -70,7 +69,6 @@ class RestaurantList extends Component {
 
     handleFilterByPrice = e => {
         const value = e.currentTarget.value
-        console.log(value)
         this.setState({priceValue: value}, ()=>{
             this.filterSearch()
         })
@@ -87,7 +85,6 @@ class RestaurantList extends Component {
 
 
     randomRestaurant = () => {
-        console.log(this.state.restaurants)
             const random = Math.floor(Math.random() * this.state.filteredRestaurants.length)
             const choice = this.state.filteredRestaurants[random]
             this.props.history.push(`restaurants/detail/${choice._id}`)
