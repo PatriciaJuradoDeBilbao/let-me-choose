@@ -53,11 +53,13 @@ class Signup extends Component {
 
         const uploadData = new FormData()
         uploadData.append('avatar', e.target.files[0])
-        this.filesService.handleUpload(uploadData)
+        this.filesService.handleUploadAvatar(uploadData)
         .then(response => {
             console.log('El archivo ya se ha subido. La URL de cloudinary es: ', response.data.secure_url)
+            let loginInfoCopy = {...this.state.loginInfo}
+            loginInfoCopy = {...loginInfoCopy, avatar: response.data.secure_url}
             this.setState({
-                ...this.state, avatar: response.data.secure_url
+                loginInfo: loginInfoCopy
             })
         })
         .catch(err => console.log(err))

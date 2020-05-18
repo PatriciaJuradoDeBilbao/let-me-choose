@@ -75,7 +75,7 @@ class RestaurantDetail extends Component {
                             <Card.Text className="text-card">{this.state.restaurantInfo.price}</Card.Text>
                             <Card.Text className="text-card">Dirección: {this.state.restaurantInfo.direction}</Card.Text>
                             </Card.Body>
-                            <Card.Img variant="bottom" src={this.state.restaurantInfo.imageUrl} />
+                            <Card.Img variant="bottom" className="img-detail" src={this.state.restaurantInfo.imageUrl} />
                         </Card>
                     </Col>
                 </Row>
@@ -92,7 +92,7 @@ class RestaurantDetail extends Component {
                        </Button>
                        
 
-                        <Button onClick={() => this.handleDelete(this.state.restaurantInfo._id)}>
+                        <Button className="icons" onClick={() => this.handleDelete(this.state.restaurantInfo._id)}>
                             <img  className="icon-list" src="/images/delete-icon.svg" alt="Delete icon"/>
                         </Button>
 

@@ -111,8 +111,8 @@ class App extends Component {
           <Route path="/signup" render={props => <Signup {...props} setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login {...props} setTheUser={this.setTheUser} />} />
           <Route path="/" exact render={() => <Home /> }></Route>
-          <Route path="/restaurants" exact render={() => <RestaurantList /> } />
-          <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail {...props}/>} />
+          <Route path="/restaurants" exact render={(props) => <RestaurantList { ...props} /> } />
+          <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail {...props} loggedInUser={this.state.loggedInUser} />} />
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
           <Route path="/restaurants/new" exact render={() => <RestaurantForm />} />
           <Route path="/restaurants/choice/:restaurantId" render={(props) => <RandomRestaurant {...props}/>} />

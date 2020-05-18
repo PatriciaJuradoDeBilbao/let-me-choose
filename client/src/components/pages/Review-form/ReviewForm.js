@@ -5,11 +5,12 @@ import Button from 'react-bootstrap/Button'
 import restaurantService from '../../../service/restaurants.service'
 class ReviewForm extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             content: '',
             rating: '',
+            // creator: this.props.loggedInUser._id
         }
         this.restaurantService = new restaurantService()
     }

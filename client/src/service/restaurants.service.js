@@ -12,7 +12,7 @@ export default class services {
     detailRestaurant = restaurantId => this.service.get(`/detail/${restaurantId}`)
     addRestaurant = theRestaurant => this.service.post('/new', theRestaurant)
     deleteRestaurant = restaurantId => this.service.get(`/delete/${restaurantId}`)
-    randomRestaurant = restaurantId => this.service.get(`/choice/${restaurantId}`)
+    editRestaurant = restaurantId => this.service.post(`/edit/${restaurantId}`)
     
     addComment = theComment => this.service.post('/newComment', theComment)
 }

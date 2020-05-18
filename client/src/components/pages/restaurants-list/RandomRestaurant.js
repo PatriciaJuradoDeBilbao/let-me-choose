@@ -8,25 +8,11 @@ class RandomRestaurant extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            randomRestaurant: {}
+            randomRestaurant: props.randomRestaurant
         }
         this.restaurantsService = new RestaurantsService()
     }
     
-    
-    // randomRestaurant = () => {
-    //     const random = Math.floor(Math.random() * this.props.restaurants.length)
-    //     const choice = this.props.restaurants[random]
-    //     console.log(this.props.restaurants[random])
-    //     this.setState({randomRestaurant: choice})
-    //     console.log(choice)
-    //     this.restaurantsService.listRestaurants.map(Math.floor(Math.random() * this.restaurants.length))
-    // }
-    
-    // componentDidUpdate = () => {
-    //     this.randomRestaurant()
-        
-    // } 
 
     render() {
 

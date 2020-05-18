@@ -14,19 +14,20 @@
 }
 
 .icon-list {
-    margin: 10px 5px 0 10px;
-    width: 30px;
-    background-color: none;
+    width: 25px;
     border: none;
     cursor: pointer;
 }
 
-
-.btn-action {
+.icons {
     background-color: none;
     border: none;
 }
 
+.img-detail {
+    height: 350px;
+    object-fit: cover;
+}
 
 
 

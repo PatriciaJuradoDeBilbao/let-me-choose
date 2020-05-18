@@ -8,10 +8,8 @@ import Button from 'react-bootstrap/Button'
 import Toast from 'react-bootstrap/Toast'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
-import { Link } from 'react-router-dom'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-// import RandomRestaurant from './RandomRestaurant'
 
 
 
@@ -26,6 +24,7 @@ class RestaurantList extends Component {
                 text: ''
             },
             restaurants: [],
+            filteredRestaurants: [],
             typeValue: '',
             priceValue: '',
             randomChoice: {}
@@ -44,7 +43,7 @@ class RestaurantList extends Component {
 
     getAllRestaurants = () =>  {
         this.restaurantsService.listRestaurants()
-            .then(response => this.setState({restaurants: response.data}))
+            .then(response => this.setState({restaurants: response.data, filteredRestaurants: response.data}))
             .catch(err => console.log(err))
     }
 
@@ -63,35 +62,47 @@ class RestaurantList extends Component {
     handleFilterByType = e => {
         const value = e.currentTarget.value
         console.log(value)
-        this.setState({typeValue: value})
+        this.setState({typeValue: value}, ()=>{
+            this.filterSearch()
+        })
 
     }
 
     handleFilterByPrice = e => {
         const value = e.currentTarget.value
         console.log(value)
-        this.setState({priceValue: value})
+        this.setState({priceValue: value}, ()=>{
+            this.filterSearch()
+        })
+    }
+
+    filterSearch = () => {
+        const restaurantsToShow = this.state.restaurants
+            .filter(restaurant =>
+             restaurant.type.includes(this.state.typeValue))
+            .filter(restaurant => restaurant.price.includes(this.state.priceValue))
+
+        this.setState({filteredRestaurants: restaurantsToShow})
     }
 
 
     randomRestaurant = () => {
         console.log(this.state.restaurants)
-            const random = Math.floor(Math.random() * this.state.restaurants.length)
-            const choice = this.state.restaurants[random]
-            // console.log(this.state.restaurants[random])
-            this.setState({randomChoice: [{...choice}]})
-            //console.log(this.state.randomChoice)
+            const random = Math.floor(Math.random() * this.state.filteredRestaurants.length)
+            const choice = this.state.filteredRestaurants[random]
+            this.props.history.push(`restaurants/detail/${choice._id}`)
 
 
+    }
+
+    displayRestaurants = () => {
+            return this.state.filteredRestaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)
     }
 
     render() {
 
         return (
             <>
-            {/* <RandomRestaurant restaurants={this.state.restaurants} /> */}
-
-
             <Container as="section"> 
                 <Row className="restaurants-filter">
                 <Col md={4}>
@@ -142,27 +153,12 @@ class RestaurantList extends Component {
 
                 <Row>
                     <Col md={{span: 8, offset: 2}}> 
-
-                        {this.state.restaurants.length > 0
-                        
-                        ?
-
-                       <Link to={`restaurants/choice/${this.state.restaurants._id}`}>
                        <Button  onClick={() => this.randomRestaurant()} className="btn btn-info btn-choose btn-block">Ch<img className="img-logo" src="/images/flechas.svg" alt="logo" />se </Button>
-                       </Link>
-
-                       : 
-                            ''
-                        }
                     </Col>
                 </Row>
 
                 <Row className="restaurants-list">
-                    {this.state.restaurants
-                        .filter(restaurant =>
-                         restaurant.type.includes(this.state.typeValue))
-                        .filter(restaurant => restaurant.price.includes(this.state.priceValue))
-                         .map(elm => <RestaurantCard key={elm._id} {...elm} />)}
+                         {this.displayRestaurants()}
                 </Row>
                 
                 <Row>

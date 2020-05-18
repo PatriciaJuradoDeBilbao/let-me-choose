@@ -11,6 +11,7 @@ router.post('/signup', (req, res, next) => {
     const password = req.body.password;
     const email = req.body.email;
     const name = req.body.name;
+    const avatar = req.body.avatar;
 
 
     if (!username || !password) {
@@ -42,7 +43,8 @@ router.post('/signup', (req, res, next) => {
             username: username,
             password: hashPass,
             email: email,
-            name: name
+            name: name,
+            avatar: avatar
         });
 
         aNewUser.save(err => {

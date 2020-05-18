@@ -10,4 +10,5 @@ export default class Services {
     }
 
     handleUpload = theFile => this.service.post('/upload', theFile)
+    handleUploadAvatar = theFile => this.service.post('/uploadAvatar', theFile)
 }
