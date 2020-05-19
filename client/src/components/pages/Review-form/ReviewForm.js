@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import restaurantService from '../../../service/restaurants.service'
+
 class ReviewForm extends Component {
 
     constructor(props) {
@@ -25,8 +26,12 @@ class ReviewForm extends Component {
     handleSubmit = e => {
         e.preventDefault()
         this.restaurantService.addComment({...this.state, myRestaurant: this.props.restaurantID})
-            .then(() => this.props.refreshReviewList())
-            .catch(err => console.log(err))
+        .then(() => this.props.refreshReviewList())
+        .catch(err => console.log(err))
+        this.setState({
+            content: '',
+            rating: ''
+        })
     }
 
 

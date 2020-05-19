@@ -12,18 +12,21 @@ h1, h2, h3, h4, strong {
 /*  --- AUTH --- */
 
 /* signup  */
-.signup {
-}
+
 .title-signup {
-  margin: 80px 0 40px 0;
+  margin: 60px 0 40px 0;
   text-align: center;
   font-weight: 600;
   font-size: 1.8em;
+  text-transform: uppercase;
+  color: #1a6a9f;
 }
 
 .signup-text {
   font-size: 1.3em;
+  margin-bottom: 40px;
 }
+
 .btn-signup {
   border: none;
   border-radius: 40px;
@@ -31,8 +34,9 @@ h1, h2, h3, h4, strong {
   padding: 10px;
 }
 
-.a-signup {
+.signup-a {
   color: #1a6a9f;
+  font-weight: 500;
 }
 
 /* login */
@@ -42,7 +46,10 @@ h1, h2, h3, h4, strong {
   text-align: center;
   font-weight: 600;
   font-size: 1.8em;
+  text-transform: uppercase;
+  color: #1a6a9f;
 }
+
 .login-text {
   text-align: start;
   font-size: 1.3em;
@@ -57,6 +64,10 @@ h1, h2, h3, h4, strong {
 
 }
 
+.login-a {
+  color: #1a6a9f;
+  font-weight: 500;
+}
 
 
 .error-message {

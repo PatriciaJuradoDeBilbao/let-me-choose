@@ -1,5 +1,5 @@
 .profile {
-    margin-top: 100px;
+
 }
 .avatar-profile {
     border-radius: 100%;
@@ -20,7 +20,8 @@
     margin-bottom: 20px;
     min-height: 250px;
     border-radius: 5px;
-    background-color: #ddd8d8;
+    background-color: #1a6a9f;
+
 }
 
 .favs {
@@ -32,6 +33,7 @@
 .wish {
     padding: 15px;
     min-height: 250px;
+
 }
 
 .rest {

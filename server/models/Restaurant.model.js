@@ -19,7 +19,7 @@ const restaurantSchema = new Schema({
     direction: String,
     myReviews: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
     likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
-    wish: [{type: Schema.Types.ObjectId, ref: 'User'}] 
+    wish: [{type: Schema.Types.ObjectId, ref: 'User'}],
     
 }, {
     timestamps: true

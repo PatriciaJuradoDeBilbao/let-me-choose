@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import ReviewCard from './ReviewCard'
 import './RestaurantDetails.css'
 import ReviewForm from '../Review-form/ReviewForm'
+import GmapMap from '../../Gmap/Gmaps Map/GmapsMap'
 
 
 class RestaurantDetail extends Component {
@@ -72,6 +73,7 @@ class RestaurantDetail extends Component {
 
 
     render() {
+        console.log(this.state.restaurantInfo)
         return (
             <>
             <Container as="section">
@@ -84,7 +86,7 @@ class RestaurantDetail extends Component {
                             <Card.Text className="title-card">{this.state.restaurantInfo.name}</Card.Text>
                             <Card.Text className="text-card">Comida {this.state.restaurantInfo.type}</Card.Text>
                             <Card.Text className="text-card">{this.state.restaurantInfo.price}</Card.Text>
-                            <Card.Text className="text-card">Dirección: {this.state.restaurantInfo.direction}</Card.Text>
+                            <Card.Text className="text-card">Ubicación: {this.state.restaurantInfo.direction}</Card.Text>
                             </Card.Body>
                             <Card.Img variant="bottom" className="img-detail" src={this.state.restaurantInfo.imageUrl} />
                         </Card>
@@ -102,7 +104,7 @@ class RestaurantDetail extends Component {
                             <img className="icon-list" src="/images/wish-icon.svg" alt="Marker icon"/>
                        </Button>
                        
-
+        
                         <Button className="icons" onClick={() => this.handleDelete(this.state.restaurantInfo._id)}>
                             <img  className="icon-list" src="/images/delete-icon.svg" alt="Delete icon"/>
                         </Button>

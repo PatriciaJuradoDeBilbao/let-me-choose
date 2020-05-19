@@ -80,7 +80,6 @@ router.post('/newComment', (req, res, next) => {
         creator: req.user._id,
         myRestaurant,
     }
-    console.log(newComment)
     Comment.create(newComment)
         .then(createdComment => {
             console.log("creado el comentario")
@@ -93,7 +92,7 @@ router.post('/newComment', (req, res, next) => {
 
 
 // delete 
-router.get('comment/delete/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+router.get('/deleteComment/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     Comment.findByIdAndRemove(req.params.id)
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))

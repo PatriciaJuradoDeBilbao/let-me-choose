@@ -1,10 +1,10 @@
-a {
+.navbar-a a {
   color:white;
   text-decoration: none;
   font-weight: 500;
 }
 
-.navbar a:hover {
+.navbar-a a:hover {
   font-size: 1.15em;
   transition: .3s;
   font-weight: 500;

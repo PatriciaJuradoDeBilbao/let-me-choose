@@ -4,10 +4,12 @@
 }
 
 .title {
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: 600;
     margin-bottom: 20px;
     text-align: center;
+    text-transform: uppercase;
+    color: #1a6a9f;
 
 }
 

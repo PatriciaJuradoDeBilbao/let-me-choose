@@ -47,7 +47,7 @@ class Login extends Component {
     render() {
 
         return (
-            <Container>
+            <Container className="containter-login">
 
                 <Row>
                     <Col md={{ span: 6, offset: 2 }}>
@@ -73,7 +73,7 @@ class Login extends Component {
                             >{this.state.errorMessage}</p>
                         </Form>
 
-                        <p className="login-text"><small>¿No tienes cuenta? <Link to="/signup">Regístrate</Link></small></p>
+                        <p className="login-text"><small>¿No tienes cuenta? <Link className="login-a" to="/signup">Regístrate</Link></small></p>
 
                     </Col>
                 </Row>

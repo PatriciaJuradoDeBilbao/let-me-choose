@@ -13,8 +13,6 @@ import AuthService from './../service/auth.service'
 import RestaurantForm from './pages/Restaurant-form/RestaurantForm'
 
 
-
-
 class App extends Component {
 
   constructor() {
@@ -36,7 +34,6 @@ class App extends Component {
 
 
   render() {
-    this.fetchUser()
     return (
       <>
       <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />

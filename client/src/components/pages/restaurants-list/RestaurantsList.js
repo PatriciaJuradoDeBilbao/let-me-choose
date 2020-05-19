@@ -91,20 +91,6 @@ class RestaurantList extends Component {
 
     displayRestaurants = () => this.state.filteredRestaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)
     
-    // PRUEBA PARA QUE CADA VEZ QUE SE USE LA APP LOS RESTAURANTES SALGAN SHUFFLE - no se bien donde llamarla 
-    // shuffleRestaurants() {
-    //     let currentIndex = this.state.restaurants.length, temporaryValue, randomIndex
-    
-    //      while (0 !== currentIndex) {
-    //        randomIndex = Math.floor(Math.random() * currentIndex)
-    //        currentIndex -= 1
-    
-    //        temporaryValue = this.state.restaurants[currentIndex]
-    //        this.state.restaurants[currentIndex] = this.cards[randomIndex]
-    //        this.state.restaurants[randomIndex] = temporaryValue
-    //      }
-    //      return this.state.restaurant
-    //    }
 
     render() {
 
@@ -115,7 +101,7 @@ class RestaurantList extends Component {
                 <Col md={4}>
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
-                            <Form.Label>¿Qué te apetece comer?</Form.Label>
+                            <Form.Label className="filter-text">¿Qué te apetece comer?</Form.Label>
                             <Form.Control onChange={this.handleFilterByType} as="select" custom>
                                 <option >Elige un tipo de comida</option>
                                 <option value="Italiana">Italiana</option>
@@ -135,7 +121,7 @@ class RestaurantList extends Component {
                 <Col md={4}>
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
-                            <Form.Label>¿Cuánto quieres gastar?</Form.Label>
+                            <Form.Label className="filter-text">¿Cuánto quieres gastar?</Form.Label>
                             <Form.Control onChange={this.handleFilterByPrice} as="select" custom>
                                 <option>Elige un rango de precio</option>
                                 <option value="Asequible(€)">Asequible(€)</option>
@@ -149,7 +135,7 @@ class RestaurantList extends Component {
                 <Col md={4}>
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
-                            <Form.Label>Tus listas</Form.Label>
+                            <Form.Label className="filter-text">Tus listas</Form.Label>
                             <Form.Control onChange={this.handleFilterByList} as="select" custom>
                             <option>Elige una de tus listas</option>
                             <option value="myFavs">Mis Favoritos</option>

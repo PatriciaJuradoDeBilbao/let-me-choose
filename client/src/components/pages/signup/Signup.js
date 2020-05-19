@@ -68,17 +68,21 @@ class Signup extends Component {
     render() {
 
         return (
-            <Container>
+            <Container className="container-signup">
 
                 <Row>
-                    <Col md={{ span: 6, offset: 2 }} className="signup">
+                    <Col md={{ span: 6, offset: 3 }} className="signup">
 
                         <h3 className="title-signup">Registro de usuario</h3>
                         <Form className="form-signup" onSubmit={this.handleSubmit}>
 
+                            <Form.Group controlId="avatar">
+                                <Form.Label>Foto de perfil</Form.Label>
+                                <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
+                            </Form.Group>
                             <Form.Group  controlId="name">
                                 <Form.Label >Nombre</Form.Label>
-                                <Form.Control  name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
+                                <Form.Control className="input-signup" name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
                             </Form.Group>
 
                             <Form.Group controlId="username">
@@ -95,10 +99,6 @@ class Signup extends Component {
                                 <Form.Label>Contraseña</Form.Label>
                                 <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
                             </Form.Group>
-                            <Form.Group controlId="avatar">
-                                <Form.Label>Foto de perfil</Form.Label>
-                                <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
-                            </Form.Group>
 
                             <Button variant="info" className="btn btn-block btn-signup" type="submit">Registrarme</Button>
                             <p
@@ -107,7 +107,7 @@ class Signup extends Component {
                             >{this.state.errorMessage}</p>
                         </Form>
 
-                        <p className="signup-text"><small>¿Ya tienes cuenta? <Link className="a-sigunp" to="/login">Inicia sesión</Link></small></p>
+                        <p className="signup-text"><small>¿Ya tienes cuenta? <Link className="signup-a" to="/login">Inicia sesión</Link></small></p>
 
                     </Col>
                 </Row>
