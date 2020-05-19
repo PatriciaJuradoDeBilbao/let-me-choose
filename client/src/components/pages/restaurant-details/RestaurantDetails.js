@@ -37,7 +37,7 @@ class RestaurantDetail extends Component {
     }
     
     displayReviews = () => {
-        return this.state.restaurantInfo.myReviews.reverse().map(review => <ReviewCard key={review._id} {...review} />)
+        return this.state.restaurantInfo.myReviews.reverse().map(review => <ReviewCard loggedInUser={this.state.loggedInUser} key={review._id} {...review} />)
     }
     
     averageRating = () => {
@@ -91,7 +91,7 @@ class RestaurantDetail extends Component {
                     </Col>
                 </Row>
                 <Row>
-                {this.props.loggedInUser ?
+                {this.props.loggedInUser &&
                     <Col md={{span: 3, offset: 1}}>
                         
                         <Button className="icons" onClick={this.submitLike}>
@@ -109,8 +109,6 @@ class RestaurantDetail extends Component {
 
                     
                     </Col>
-                    :
-                    null
                 }
                     <Col md={5}>
                         <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></h5>  

@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "/images/flechas.svg",
+      "src": "flechas.svg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/images/flechas.svg",
+      "src": "flechas.svg",
       "type": "image/png",
       "sizes": "512x512"
     }

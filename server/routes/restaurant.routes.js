@@ -68,15 +68,6 @@ router.get('/delete/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-// // edit
-// router.post('/edit/:id', ensureLogin.ensureLoggedIn(), (req,res,next) => {
-//     Restaurant.findByIdAndUpdate(req.params.id, req.body)
-//     .then(data => res.json(data))
-//     .catch(err => next(new Error(err)))
-
-// })
-
-
 
 // comments 
 
@@ -102,7 +93,7 @@ router.post('/newComment', (req, res, next) => {
 
 
 // delete 
-router.get('comment/delete/:id', (req, res, next) => {
+router.get('comment/delete/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     Comment.findByIdAndRemove(req.params.id)
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))

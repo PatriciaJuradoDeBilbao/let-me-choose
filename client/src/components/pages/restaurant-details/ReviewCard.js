@@ -30,7 +30,7 @@ export default ReviewCard
 
 
 
-// DELETE OPTION
+// DELETE OPTION - esta me dice que review no existe 
 
 // import React, { Component} from 'react'
 // import Col from 'react-bootstrap/Col'
@@ -68,11 +68,11 @@ export default ReviewCard
 //             <Col md={{span: 8, offset: 1}} className="rating-info">
 //                 {review.rating}<img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" />
                 
-//             {this.props.loggedInUser &&
-//                 <Button onClick={() => this.handleDelete(this.state.restaurantInfo._id)} className="icons" >
+
+//                 <Button className="icons" >
 //                     <img  className="delete-comment" src="/images/delete-icon.svg" alt="Delete icon"/>
 //                 </Button>
-//             }
+
 //                 <hr/>
 //             </Col>
 //             </>

@@ -91,6 +91,20 @@ class RestaurantList extends Component {
 
     displayRestaurants = () => this.state.filteredRestaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)
     
+    // PRUEBA PARA QUE CADA VEZ QUE SE USE LA APP LOS RESTAURANTES SALGAN SHUFFLE - no se bien donde llamarla 
+    // shuffleRestaurants() {
+    //     let currentIndex = this.state.restaurants.length, temporaryValue, randomIndex
+    
+    //      while (0 !== currentIndex) {
+    //        randomIndex = Math.floor(Math.random() * currentIndex)
+    //        currentIndex -= 1
+    
+    //        temporaryValue = this.state.restaurants[currentIndex]
+    //        this.state.restaurants[currentIndex] = this.cards[randomIndex]
+    //        this.state.restaurants[randomIndex] = temporaryValue
+    //      }
+    //      return this.state.restaurant
+    //    }
 
     render() {
 

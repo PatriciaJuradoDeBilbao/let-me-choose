@@ -11,7 +11,7 @@ import Login from './pages/login/Login'
 import Profile from './pages/profile/Profile'
 import AuthService from './../service/auth.service'
 import RestaurantForm from './pages/Restaurant-form/RestaurantForm'
-//import RandomRestaurant from './pages/restaurants-list/RandomRestaurant'
+
 
 
 
@@ -49,7 +49,7 @@ class App extends Component {
           <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail {...props} loggedInUser={this.state.loggedInUser} />} />
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
           <Route path="/restaurants/new" exact render={() => <RestaurantForm loggedInUser={this.state.loggedInUser} />} />
-          {/* <Route path="/restaurants/choice/:restaurantId" render={(props) => <RandomRestaurant {...props}/>} /> */}
+          
         </Switch>
       </main>
 

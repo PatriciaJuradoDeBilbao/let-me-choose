@@ -12,10 +12,10 @@ export default class services {
     detailRestaurant = restaurantId => this.service.get(`/detail/${restaurantId}`)
     addRestaurant = theRestaurant => this.service.post('/new', theRestaurant)
     deleteRestaurant = restaurantId => this.service.get(`/delete/${restaurantId}`)
-    editRestaurant = restaurantId => this.service.post(`/edit/${restaurantId}`)
+
     
     addComment = theComment => this.service.post('/newComment', theComment)
-    deleteComment = theComment => this.service.post(`comment/delete/${theComment}`)
+    deleteComment = theComment => this.service.post(`comment/delete/${theComment}`) // NO FUNCIONA 
     likeRestaurant = like => this.service.post('/likeRestaurant', like)
     wishRestaurant = wish => this.service.post('/wishRestaurant', wish)
     
