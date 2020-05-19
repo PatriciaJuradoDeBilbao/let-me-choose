@@ -27,6 +27,7 @@ class RestaurantList extends Component {
             filteredRestaurants: [],
             typeValue: '',
             priceValue: '',
+            listsValue: '',
             randomChoice: {}
         }
         this.restaurantsService = new RestaurantsService()
@@ -48,10 +49,8 @@ class RestaurantList extends Component {
     }
 
 
-    componentDidMount = () => {
-        this.getAllRestaurants()
-    }
-
+    componentDidMount = () => this.getAllRestaurants()
+    
 
     finishRestaurantPost = () => {
         this.handleModal(false)
@@ -61,17 +60,18 @@ class RestaurantList extends Component {
 
     handleFilterByType = e => {
         const value = e.currentTarget.value
-        this.setState({typeValue: value}, ()=>{
-            this.filterSearch()
-        })
+        this.setState({typeValue: value}, () => this.filterSearch())
 
     }
 
     handleFilterByPrice = e => {
         const value = e.currentTarget.value
-        this.setState({priceValue: value}, ()=>{
-            this.filterSearch()
-        })
+        this.setState({priceValue: value}, () => this.filterSearch())
+    }
+
+    handleFilterByList = e => {
+        const value = e.currentTarget.value
+        this.setState({listsValue: value}, () => this.filterSearch())
     }
 
     filterSearch = () => {
@@ -83,18 +83,14 @@ class RestaurantList extends Component {
         this.setState({filteredRestaurants: restaurantsToShow})
     }
 
-
     randomRestaurant = () => {
             const random = Math.floor(Math.random() * this.state.filteredRestaurants.length)
             const choice = this.state.filteredRestaurants[random]
             this.props.history.push(`restaurants/detail/${choice._id}`)
-
-
     }
 
-    displayRestaurants = () => {
-            return this.state.filteredRestaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)
-    }
+    displayRestaurants = () => this.state.filteredRestaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)
+    
 
     render() {
 
@@ -105,7 +101,7 @@ class RestaurantList extends Component {
                 <Col md={4}>
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
-                            <Form.Label>Elige por tipo de comida</Form.Label>
+                            <Form.Label>¿Qué te apetece comer?</Form.Label>
                             <Form.Control onChange={this.handleFilterByType} as="select" custom>
                                 <option >Elige un tipo de comida</option>
                                 <option value="Italiana">Italiana</option>
@@ -125,7 +121,7 @@ class RestaurantList extends Component {
                 <Col md={4}>
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
-                            <Form.Label>Elige por rango de precio</Form.Label>
+                            <Form.Label>¿Cuánto quieres gastar?</Form.Label>
                             <Form.Control onChange={this.handleFilterByPrice} as="select" custom>
                                 <option>Elige un rango de precio</option>
                                 <option value="Asequible(€)">Asequible(€)</option>
@@ -140,8 +136,10 @@ class RestaurantList extends Component {
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
                             <Form.Label>Tus listas</Form.Label>
-                            <Form.Control as="select" custom>
-                            <option></option>
+                            <Form.Control onChange={this.handleFilterByList} as="select" custom>
+                            <option>Elige una de tus listas</option>
+                            <option value="myFavs">Mis Favoritos</option>
+                            <option value="myWishList">Mi WishList</option>
                             </Form.Control>
                         </Form.Group>
                     </Form>
@@ -159,12 +157,13 @@ class RestaurantList extends Component {
                 </Row>
                 
                 <Row>
+                {this.props.loggedInUser &&
                     <Col md={{span: 8, offset: 2}} className="add-rest">
                     <h6>¿Eres el dueño de un restaurante?</h6>
                         <Button onClick={() => this.handleModal(true)} variant="info" type="submit" className="btn-lg btn-add">Añadir tu restaurante</Button>
                     </Col>
+                }
                 </Row>
-
 
                 <Modal show={this.state.modalShow} onHide={() => this.handleModal(false)}>
                     <Modal.Body>

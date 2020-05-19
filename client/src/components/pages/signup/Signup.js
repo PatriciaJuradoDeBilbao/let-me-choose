@@ -71,15 +71,14 @@ class Signup extends Component {
             <Container>
 
                 <Row>
-                    <Col md={{ span: 6, offset: 2 }}>
+                    <Col md={{ span: 6, offset: 2 }} className="signup">
 
                         <h3 className="title-signup">Registro de usuario</h3>
-                        <hr></hr>
-                        <Form onSubmit={this.handleSubmit}>
+                        <Form className="form-signup" onSubmit={this.handleSubmit}>
 
-                            <Form.Group controlId="name">
-                                <Form.Label>Nombre</Form.Label>
-                                <Form.Control name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
+                            <Form.Group  controlId="name">
+                                <Form.Label >Nombre</Form.Label>
+                                <Form.Control  name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
                             </Form.Group>
 
                             <Form.Group controlId="username">
@@ -108,7 +107,7 @@ class Signup extends Component {
                             >{this.state.errorMessage}</p>
                         </Form>
 
-                        <p className="signup-text"><small>¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link></small></p>
+                        <p className="signup-text"><small>¿Ya tienes cuenta? <Link className="a-sigunp" to="/login">Inicia sesión</Link></small></p>
 
                     </Col>
                 </Row>

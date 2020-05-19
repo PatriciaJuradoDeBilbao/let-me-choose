@@ -1,5 +1,6 @@
 .home {
-  margin: 100px;
+  margin: 0 50px;
+  padding: 100px;
 }
 
 .text-home {
@@ -10,26 +11,34 @@
   text-transform: uppercase;
   }
   
+p {
+  font-weight: 400;
+  font-size: 1.4em;
+  text-align: center;
+  text-align: left;
+}
 
-  p {
-    font-weight: 400;
-    font-size: 1.4em;
-    text-align: center;
-    text-align: left;
-  }
 .text-bold {
   font-weight: 500;
 }
-  .btn-choose-home {
-    font-weight: 500;
-    font-size: 1.4em;
-    padding: 10px 35px;
-    margin: 15px 0;
-    border: none;
-    border-radius: 40px;
-    background-color: #1a6a9f;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 
-  }
+.btn-choose-home {
+  font-weight: 500;
+  font-size: 1.4em;
+  padding: 10px 35px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 40px;
+  background-color: #1a6a9f;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+}
+
+.bg {
+  margin-top: 50px;
+  width: 600px;
+  object-fit: cover;
+  opacity: .6;
+}
 

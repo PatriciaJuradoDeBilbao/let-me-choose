@@ -17,7 +17,9 @@ const restaurantSchema = new Schema({
         enum: ['Asequible(€)', 'Moderado(€€)', 'Caro(€€€)', 'Muy caro(€€€€)']
     },
     direction: String,
-    myReviews: [{type: Schema.Types.ObjectId, ref: 'Comment'}] 
+    myReviews: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
+    likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    wish: [{type: Schema.Types.ObjectId, ref: 'User'}] 
     
 }, {
     timestamps: true

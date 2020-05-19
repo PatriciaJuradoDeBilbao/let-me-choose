@@ -25,7 +25,7 @@ const Profile = props => {
                 <Col md={6} className="wish">
                     <h1 className="title-profile">Mi WishList<img className="icon-list-profile" src="/images/wish-icon.svg" alt="Marker icon"/></h1>
 
-                    {props.loggedInUser.myWishList.map(wish => <p className="rest"><Link to={`restaurants/detail/${props._id}`}> {wish.name}</Link> </p>)}
+                    {props.loggedInUser.myWishList.map(wish => <p className="rest"><Link to={`restaurants/detail/${wish._id}`}> {wish.name}</Link> </p>)}
                 </Col>
             </Row>
         </Container>

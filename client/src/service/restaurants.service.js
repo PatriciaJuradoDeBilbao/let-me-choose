@@ -15,5 +15,9 @@ export default class services {
     editRestaurant = restaurantId => this.service.post(`/edit/${restaurantId}`)
     
     addComment = theComment => this.service.post('/newComment', theComment)
+    deleteComment = theComment => this.service.post(`comment/delete/${theComment}`)
+    likeRestaurant = like => this.service.post('/likeRestaurant', like)
+    wishRestaurant = wish => this.service.post('/wishRestaurant', wish)
+    
 }
 

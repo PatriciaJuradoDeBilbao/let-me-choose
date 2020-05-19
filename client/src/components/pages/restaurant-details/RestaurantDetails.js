@@ -18,16 +18,14 @@ class RestaurantDetail extends Component {
         this.state = { 
             restaurantInfo: {}
         }
+
         this.restaurantsService = new RestaurantsService()
     }
 
     getRestaurantInfo() {
-        console.log("llamada!")
         const id = this.props.match.params.restaurantId
         this.restaurantsService.detailRestaurant(id)
-        .then(info=> {
-            console.log(info.data)
-            this.setState({restaurantInfo: info.data})})
+        .then(info=> this.setState({restaurantInfo: info.data}))
         .catch(err => console.log(err))
     }
 
@@ -39,23 +37,41 @@ class RestaurantDetail extends Component {
     }
     
     displayReviews = () => {
-        return this.state.restaurantInfo.myReviews.reverse().map(review => <ReviewCard key={review._id} newReviewAdded={()=>this.handleNewReview()} {...review}/>)
+        return this.state.restaurantInfo.myReviews.reverse().map(review => <ReviewCard key={review._id} {...review} />)
     }
     
     averageRating = () => {
-        return this.state.restaurantInfo.myReviews.reduce((acc, cu) => {
+        if(this.state.restaurantInfo.myReviews.length === 0) {
+            return 0
+        }
+        return (this.state.restaurantInfo.myReviews.reduce((acc, cu) => {
             return +acc + cu.rating
-        }, 0) / this.state.restaurantInfo.myReviews.length 
+        }, 0) / this.state.restaurantInfo.myReviews.length).toFixed(1)
     }
     
-    componentDidMount = () => {
-        this.getRestaurantInfo()
+    submitLike = e => {
+        console.log('entro')
+        e.preventDefault()
+        const like = {user: this.props.loggedInUser._id, restaurant: this.state.restaurantInfo._id}
+        this.restaurantsService.likeRestaurant(like)
+        .then(() => console.log('done'))
+        .catch(err => console.log(err))
     }
 
+    sumbitWish = e => {
+        console.log('entro')
+        e.preventDefault()
+        const wish = {user: this.props.loggedInUser._id, restaurant: this.state.restaurantInfo._id}
+        this.restaurantsService.wishRestaurant(wish)
+        .then(() => console.log('agregado'))
+        .catch(err => console.log(err))
+
+    }
+
+    componentDidMount = () => this.getRestaurantInfo()
 
 
     render() {
-       
         return (
             <>
             <Container as="section">
@@ -75,14 +91,14 @@ class RestaurantDetail extends Component {
                     </Col>
                 </Row>
                 <Row>
-                {this.props.loggedInUser &&
+                {this.props.loggedInUser ?
                     <Col md={{span: 3, offset: 1}}>
                         
-                        <Button className="icons" >
+                        <Button className="icons" onClick={this.submitLike}>
                             <img className="icon-list" src="/images/heart-icon.svg" alt="Heart icon"/>
                        </Button>
                        
-                        <Button className="icons" >
+                        <Button className="icons" onClick={this.sumbitWish} >
                             <img className="icon-list" src="/images/wish-icon.svg" alt="Marker icon"/>
                        </Button>
                        
@@ -93,8 +109,10 @@ class RestaurantDetail extends Component {
 
                     
                     </Col>
+                    :
+                    null
                 }
-                    <Col md={{span: 4, offset: 1}}>
+                    <Col md={5}>
                         <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></h5>  
                     </Col>
                     {this.props.loggedInUser &&  <ReviewForm restaurantID={this.state.restaurantInfo._id} refreshReviewList={()=>this.getRestaurantInfo()}/>}
@@ -104,8 +122,8 @@ class RestaurantDetail extends Component {
                         <h3 className="comment-title">Comentarios</h3>
                         <hr/>
                     </Col>
- 
-                    {this.state.restaurantInfo.myReviews && this.displayReviews()}
+                    
+                    {this.state.restaurantInfo.myReviews && this.displayReviews() }
                 </Row>
                 
 

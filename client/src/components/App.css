@@ -8,15 +8,20 @@ body {
 h1, h2, h3, h4, strong {
   font-weight: 400;
 }
+
 /*  --- AUTH --- */
 
+/* signup  */
+.signup {
+}
 .title-signup {
+  margin: 80px 0 40px 0;
   text-align: center;
   font-weight: 600;
+  font-size: 1.8em;
 }
 
 .signup-text {
-  text-align: center;
   font-size: 1.3em;
 }
 .btn-signup {
@@ -24,12 +29,19 @@ h1, h2, h3, h4, strong {
   border-radius: 40px;
   background-color: #1a6a9f;
   padding: 10px;
-
 }
 
+.a-signup {
+  color: #1a6a9f;
+}
+
+/* login */
+
 .title-login {
+  margin: 80px 0 40px 0;
   text-align: center;
   font-weight: 600;
+  font-size: 1.8em;
 }
 .login-text {
   text-align: start;
@@ -44,6 +56,7 @@ h1, h2, h3, h4, strong {
   padding: 10px;
 
 }
+
 
 
 .error-message {

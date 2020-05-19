@@ -53,7 +53,6 @@ class Login extends Component {
                     <Col md={{ span: 6, offset: 2 }}>
 
                         <h3 className="title-login">Inicio de sesión</h3>
-                        <hr></hr>
                         <Form onSubmit={this.handleSubmit}>
 
                             <Form.Group controlId="name">
