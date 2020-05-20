@@ -7,7 +7,10 @@ const restaurantSchema = new Schema({
         default: 'https://image.flaticon.com/icons/svg/527/527095.svg'
     },
     name: String,
-    creator: {type: Schema.Types.ObjectId, ref: 'User'},
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     type: {
         type: String,
         enum: ['Italiana', 'Asiática', 'Venezolana', 'India', 'Mexicana', 'Mediterránea', 'Saludable', 'Árabe', 'Americana', 'Vegetariana']
@@ -16,15 +19,28 @@ const restaurantSchema = new Schema({
         type: String,
         enum: ['Asequible(€)', 'Moderado(€€)', 'Caro(€€€)', 'Muy caro(€€€€)']
     },
-    direction: String,
-    myReviews: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
-    likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
-    wish: [{type: Schema.Types.ObjectId, ref: 'User'}],
-    
+    loc: {
+        street: String,
+        coordinates: [Number]
+    },
+    myReviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
+    likes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    wish: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+
+
+
 }, {
     timestamps: true
 })
-restaurantSchema.index({ location: '2dsphere' })
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema)
 

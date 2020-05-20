@@ -15,9 +15,8 @@ class RestaurantForm extends Component {
             name: '',
             type: '',
             price: '',
-            direction: '',
-            // creator:
- 
+            loc: {coordinates: [], street:''},
+            creator: ''
         }
         this.restaurantsService = new RestaurantsService()
         this.filesService = new FileService()
@@ -25,11 +24,15 @@ class RestaurantForm extends Component {
 
     handleInputChange = e => {
         const { name, value } = e.target
-        
+        if(name === "street"){
+            this.setState({loc:{street: value}})
+        }else{
         this.setState({
             [name]: value
         })
     }
+    }
+
 
     handleSubmit = e => {
         e.preventDefault()
@@ -93,10 +96,16 @@ class RestaurantForm extends Component {
                         <option>Muy caro(€€€€)</option>
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group controlId="direction">
+                 
+                {this.state.loc && 
+                        <Form.Group controlId="location">
                         <Form.Label>Dirección</Form.Label>
-                        <Form.Control  name="direction" type="text" value={this.state.direction} onChange={this.handleInputChange}/>
-                    </Form.Group>
+                        <Form.Control  name="street" type="text" placeholder="Calle" value={this.state.loc.street} onChange={this.handleInputChange}/>
+                        {/* <Form.Control  name="lat" type="text" placeholder="latitud" value={this.state.loc.coordinates[0]} onChange={this.handleInputChange}/>
+                        <Form.Control  name="lng" placeholder="longitud" type="text" value={this.state.loc.coordinates[1]} onChange={this.handleInputChange}/> */}
+                        </Form.Group>
+                    }
+                
                     <Button variant="primary" type="submit" className="btn btn-block btn-login">Añadir</Button>
                 </Form>
             </Container>

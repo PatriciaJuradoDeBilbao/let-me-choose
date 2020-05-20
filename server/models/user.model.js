@@ -11,7 +11,7 @@ const userSchema = new Schema({
         default: 'https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png'
     },
     myReviews: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
-    myRestaurant: {type: Schema.Types.ObjectId, ref: 'Restaurant'},
+    myRestaurant: [{type: Schema.Types.ObjectId, ref: 'Restaurant'}],
     myFavs: [{type: Schema.Types.ObjectId, ref: 'Restaurant'}],
     myWishList: [{type: Schema.Types.ObjectId, ref: 'Restaurant'}] 
 

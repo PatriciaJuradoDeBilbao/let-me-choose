@@ -17,7 +17,7 @@ class RestaurantDetail extends Component {
     constructor(props) {
         super(props)
         this.state = { 
-            restaurantInfo: {}
+            restaurantInfo: null
         }
 
         this.restaurantsService = new RestaurantsService()
@@ -80,8 +80,9 @@ class RestaurantDetail extends Component {
 
     render() {
         console.log(this.state.restaurantInfo)
-        return (
-            <>
+       if(!this.state.restaurantInfo){
+           return <h1>Cargando</h1>
+       }else return (
             <Container as="section">
 
                 <Row className="restaurant-detail">
@@ -93,8 +94,8 @@ class RestaurantDetail extends Component {
                             <Card.Text className="title-card">{this.state.restaurantInfo.name}</Card.Text>
                             <Card.Text className="text-card">Comida {this.state.restaurantInfo.type}</Card.Text>
                             <Card.Text className="text-card">{this.state.restaurantInfo.price}</Card.Text>
-                            <Card.Text className="text-card">Ubicación: {this.state.restaurantInfo.direction}</Card.Text>
-                            <GmapMap />
+                            <Card.Text className="text-card">Ubicación: {this.state.restaurantInfo.loc.street}</Card.Text>
+
                             </Card.Body>
                         </Card>
                     </Col>
@@ -111,14 +112,13 @@ class RestaurantDetail extends Component {
                             <img className="icon-list" src="/images/wish-icon.svg" alt="Marker icon"/>
                        </Button>
                        
-                    {this.state.restaurantInfo.creator._id === this.props.loggedInUser &&
                         <Button className="icons" onClick={() => this.handleDelete(this.state.restaurantInfo._id)}>
                             <img  className="icon-list" src="/images/delete-icon.svg" alt="Delete icon"/>
-                        </Button>
-                    }
+                        </Button> 
                     
                     </Col>
                 }
+
                     <Col md={5}>
                         <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></h5>  
                     </Col>
@@ -136,9 +136,10 @@ class RestaurantDetail extends Component {
 
                 <Link to={`/restaurants`} className="btn btn-info btn-back">Volver</Link>
             </Container>
-            </>
+         
+        
         )
     }
 }
 
-export default RestaurantDetail
+export default RestaurantDetail 

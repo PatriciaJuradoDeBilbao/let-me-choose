@@ -55,11 +55,26 @@ router.get('/detail/:id', (req, res, next) => {
 
 // add
 router.post('/new', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-
-    Restaurant.create(req.body)
+    console.log(req.body)
+    const {imageUrl, name, type, price, loc, myUser} = req.body
+    const newRestaurant = {
+        imageUrl,
+        name,
+        type,
+        price,
+        loc,
+        myUser,
+        creator: req.user._id
+    }
+    Restaurant.create(newRestaurant)
+    .then(createdRestaurant => {
+        console.log('creado el restaurante')
+        return User.findByIdAndUpdate(myUser, {$push: {myRestaurant: createdRestaurant._id}}, {new:true})
+    })
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))
 })
+
 
 
 // delete
