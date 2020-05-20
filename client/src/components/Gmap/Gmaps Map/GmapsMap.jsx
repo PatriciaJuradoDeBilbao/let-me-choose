@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
-// import Marker from '../Marker/Marker'
+import Marker from '../Marker/Marker'
 
 
 export default class GmapMap extends Component {
@@ -39,7 +39,7 @@ export default class GmapMap extends Component {
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
                 >
-                    {this.props.marker&&
+                    {this.props.marker &&
                     <Marker
                     lat={this.props.pos.lat}
                     lng={this.props.pos.lng}

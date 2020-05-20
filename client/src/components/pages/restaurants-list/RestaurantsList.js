@@ -76,8 +76,7 @@ class RestaurantList extends Component {
 
     filterSearch = () => {
         const restaurantsToShow = this.state.restaurants
-            .filter(restaurant =>
-             restaurant.type.includes(this.state.typeValue))
+            .filter(restaurant => restaurant.type.includes(this.state.typeValue))
             .filter(restaurant => restaurant.price.includes(this.state.priceValue))
 
         this.setState({filteredRestaurants: restaurantsToShow})

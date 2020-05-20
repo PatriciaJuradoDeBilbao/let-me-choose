@@ -15,7 +15,8 @@ class RestaurantForm extends Component {
             name: '',
             type: '',
             price: '',
-            direction: ''
+            direction: '',
+            // creator:
  
         }
         this.restaurantsService = new RestaurantsService()

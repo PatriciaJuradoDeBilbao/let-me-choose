@@ -3,9 +3,9 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 //import restaurantService from '../../../service/restaurants.service'
 
-const ReviewCard = review => {
-    
-
+const ReviewCard = (props) => {
+    const {loggedInUser, review, handleDelete} = props
+    console.log(props)
 
     return (
         <>
@@ -18,10 +18,13 @@ const ReviewCard = review => {
         <Col md={{span: 8, offset: 1}} className="rating-info">
             {review.rating}<img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" />
             
-
-            <Button  className="icons">
-                <img  className="delete-comment" src="/images/delete-icon.svg" alt="Delete icon"/>
+        {loggedInUser && review.creator._id === loggedInUser._id &&
+            <Button onClick={()=>handleDelete(review._id)}  className="icons">
+                 <img  className="delete-comment" src="/images/delete-icon.svg" alt="Delete icon"/>
             </Button>
+}
+        
+        }
             <hr/>
         </Col>
         </>

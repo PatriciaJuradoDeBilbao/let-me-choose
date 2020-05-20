@@ -30,6 +30,12 @@ class RestaurantDetail extends Component {
         .catch(err => console.log(err))
     }
 
+    deleteComment = id => {
+        this.restaurantsService.deleteComment(id)
+        .then((info) => this.getRestaurantInfo())
+        .catch(err => console.log(err))
+    }
+
     
     handleDelete = id => {
         this.restaurantsService.deleteRestaurant(id)
@@ -38,7 +44,7 @@ class RestaurantDetail extends Component {
     }
     
     displayReviews = () => {
-        return this.state.restaurantInfo.myReviews.reverse().map(review => <ReviewCard loggedInUser={this.state.loggedInUser} key={review._id} {...review} />)
+        return this.state.restaurantInfo.myReviews.reverse().map(review => <ReviewCard handleDelete={(reviewID)=>this.deleteComment(reviewID)} loggedInUser={this.props.loggedInUser} key={review._id} review={review} />)
     }
     
     averageRating = () => {
@@ -82,13 +88,14 @@ class RestaurantDetail extends Component {
 
                     <Col md={{span: 8, offset: 1}} className="restaurant-info">
                         <Card>
+                            <Card.Img variant="top" className="img-detail" src={this.state.restaurantInfo.imageUrl} />
                             <Card.Body>
                             <Card.Text className="title-card">{this.state.restaurantInfo.name}</Card.Text>
                             <Card.Text className="text-card">Comida {this.state.restaurantInfo.type}</Card.Text>
                             <Card.Text className="text-card">{this.state.restaurantInfo.price}</Card.Text>
                             <Card.Text className="text-card">Ubicación: {this.state.restaurantInfo.direction}</Card.Text>
+                            <GmapMap />
                             </Card.Body>
-                            <Card.Img variant="bottom" className="img-detail" src={this.state.restaurantInfo.imageUrl} />
                         </Card>
                     </Col>
                 </Row>
@@ -104,11 +111,11 @@ class RestaurantDetail extends Component {
                             <img className="icon-list" src="/images/wish-icon.svg" alt="Marker icon"/>
                        </Button>
                        
-        
+                    {this.state.restaurantInfo.creator._id === this.props.loggedInUser &&
                         <Button className="icons" onClick={() => this.handleDelete(this.state.restaurantInfo._id)}>
                             <img  className="icon-list" src="/images/delete-icon.svg" alt="Delete icon"/>
                         </Button>
-
+                    }
                     
                     </Col>
                 }

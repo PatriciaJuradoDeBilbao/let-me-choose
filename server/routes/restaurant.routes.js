@@ -55,6 +55,7 @@ router.get('/detail/:id', (req, res, next) => {
 
 // add
 router.post('/new', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+
     Restaurant.create(req.body)
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))
@@ -93,9 +94,15 @@ router.post('/newComment', (req, res, next) => {
 
 // delete 
 router.get('/deleteComment/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-    Comment.findByIdAndRemove(req.params.id)
-        .then(data => res.json(data))
-        .catch(err => next(new Error(err)))
+    Comment.findById(req.params.id)
+    .then((comment)=>{
+        return User.findByIdAndUpdate(comment.creator, {$pull: {myReviews: comment._id}}, {new:true})
+    })
+    .then(comment => Restaurant.findByIdAndUpdate(comment.restaurant, {$pull: {myReviews: comment._id}}, {new:true}))
+    .then(restaurantUpdated => {
+        return Comment.findByIdAndRemove(req.params.id)})
+    .then(data => res.json(data))
+    .catch(err => next(new Error(err)))
 })
 
 

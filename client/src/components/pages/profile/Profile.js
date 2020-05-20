@@ -7,7 +7,6 @@ import './Profile.css'
 
 const Profile = props => {
 
-
     return (
         <>
         <Container as="section" className="profile">
@@ -38,3 +37,4 @@ const Profile = props => {
 
 
 export default Profile
+
