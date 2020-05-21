@@ -18,9 +18,7 @@ class ReviewForm extends Component {
 
     handleInputChange = e => {
         const { name, value } = e.target
-        this.setState({
-            [name]: value
-        })
+        this.setState({ [name]: value })
     }
 
     handleSubmit = e => {

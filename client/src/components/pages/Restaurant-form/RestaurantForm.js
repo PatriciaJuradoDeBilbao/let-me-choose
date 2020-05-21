@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import './RestaurantForm.css'
+import GmapsPlaces from '../../Gmap/GmapsPlaces/GmapsPlaces'
 
 class RestaurantForm extends Component {
 
@@ -15,7 +16,10 @@ class RestaurantForm extends Component {
             name: '',
             type: '',
             price: '',
-            loc: {coordinates: [], street:''},
+            loc: {
+                street:'',
+                coordinates: [] 
+            },
             creator: ''
         }
         this.restaurantsService = new RestaurantsService()
@@ -24,15 +28,8 @@ class RestaurantForm extends Component {
 
     handleInputChange = e => {
         const { name, value } = e.target
-        if(name === "street"){
-            this.setState({loc:{street: value}})
-        }else{
-        this.setState({
-            [name]: value
-        })
+        this.setState({ [name]: value})
     }
-    }
-
 
     handleSubmit = e => {
         e.preventDefault()
@@ -42,7 +39,6 @@ class RestaurantForm extends Component {
     }
 
     handleFileUpload = e => {
-
         const uploadData = new FormData()
         uploadData.append('imageUrl', e.target.files[0])
         this.filesService.handleUpload(uploadData)
@@ -53,7 +49,14 @@ class RestaurantForm extends Component {
             })
         })
         .catch(err => console.log(err))
-    }   
+    }
+    
+    getData = (data) =>{
+        this.setState({
+            ...this.state,
+            loc: {street: data.street, coordinates: [data.coordinates.lat, data.coordinates.lng]}
+        })
+    }
 
     render() {
 
@@ -100,9 +103,7 @@ class RestaurantForm extends Component {
                 {this.state.loc && 
                         <Form.Group controlId="location">
                         <Form.Label>Dirección</Form.Label>
-                        <Form.Control  name="street" type="text" placeholder="Calle" value={this.state.loc.street} onChange={this.handleInputChange}/>
-                        {/* <Form.Control  name="lat" type="text" placeholder="latitud" value={this.state.loc.coordinates[0]} onChange={this.handleInputChange}/>
-                        <Form.Control  name="lng" placeholder="longitud" type="text" value={this.state.loc.coordinates[1]} onChange={this.handleInputChange}/> */}
+                        <GmapsPlaces getData = {(data => this.getData(data))}></GmapsPlaces>
                         </Form.Group>
                     }
                 

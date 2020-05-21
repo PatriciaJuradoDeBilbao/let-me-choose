@@ -12,7 +12,6 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 
-
 class RestaurantList extends Component {
 
     constructor() {
@@ -33,7 +32,9 @@ class RestaurantList extends Component {
         this.restaurantsService = new RestaurantsService()
     }
 
+
     handleModal = visible => this.setState({ modalShow: visible})
+
 
     handleToast = (visible, text = '') => {
         const toastCopy = { ...this.state.toast }
@@ -41,6 +42,7 @@ class RestaurantList extends Component {
         toastCopy.text = text
         this.setState({ toast: toastCopy })
     }
+
 
     getAllRestaurants = () =>  {
         this.restaurantsService.listRestaurants()
@@ -55,24 +57,28 @@ class RestaurantList extends Component {
     finishRestaurantPost = () => {
         this.handleModal(false)
         this.getAllRestaurants()
+        this.props.updateUser()
         this.handleToast(true, 'Restaurante añadido correctamente')
     }
+
 
     handleFilterByType = e => {
         const value = e.currentTarget.value
         this.setState({typeValue: value}, () => this.filterSearch())
-
     }
+
 
     handleFilterByPrice = e => {
         const value = e.currentTarget.value
         this.setState({priceValue: value}, () => this.filterSearch())
     }
 
+
     handleFilterByList = e => {
         const value = e.currentTarget.value
-        this.setState({listsValue: value}, () => this.filterSearch())
+        this.setState({listsValue: value}, () => this.filterSearch()) // this.prop.wish list y loggedin PARA FILTRAR POR MIS LISTAS - POR HACER
     }
+
 
     filterSearch = () => {
         const restaurantsToShow = this.state.restaurants
@@ -82,11 +88,13 @@ class RestaurantList extends Component {
         this.setState({filteredRestaurants: restaurantsToShow})
     }
 
+
     randomRestaurant = () => {
             const random = Math.floor(Math.random() * this.state.filteredRestaurants.length)
             const choice = this.state.filteredRestaurants[random]
             this.props.history.push(`restaurants/detail/${choice._id}`)
     }
+
 
     displayRestaurants = () => this.state.filteredRestaurants.map(elm => <RestaurantCard key={elm._id} {...elm} />)
     

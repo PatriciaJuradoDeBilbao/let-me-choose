@@ -10,14 +10,14 @@ export default class GmapMap extends Component {
     }
 
     state = {
-        lat:40.4167754,
-        lng:-3.7037901999999576,
+        lat:40.416628,
+        lng:-3.703810,
     }
 
     static defaultProps = {
         center: {
-            lat: 40.4167754,
-            lng: -3.7037901999999576
+            lat:40.416628,
+            lng:-3.703810,
         },
         zoom: 16
     };
@@ -28,29 +28,24 @@ export default class GmapMap extends Component {
     }
     render() {
         const handleApiLoaded = (map, maps) => {
-            // use map and maps objects
           };
         return (
-            <div style={{ height: '50vh', width: '100%', zIndex:0}}>
+            <div style={{ height: '200px', width: '100%', zIndex:0}}>
+
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyAN0mEFC4qZuRccTd0vgrFsddCVbVzLx1o" }}
                     defaultCenter={this.props.pos && this.props.pos}
                     defaultZoom={this.props.zoom}
                     yesIWantToUseGoogleMapApiInternals
-                    onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
-                >
-                    {this.props.marker &&
+                    onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}>
+                    
                     <Marker
-                    lat={this.props.pos.lat}
-                    lng={this.props.pos.lng}
-                    draggable={true}
-                    text="My Marker"
-                />
-                    }
-                    
-                    
+                    lat={this.props.pos.coordinates}
+                    lng={this.props.pos.coordinates}
+                    draggable={true}/>
+            
                 </GoogleMapReact>
             </div>
-        );
+        )
     }
 }

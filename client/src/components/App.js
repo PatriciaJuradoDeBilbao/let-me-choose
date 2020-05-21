@@ -24,12 +24,17 @@ class App extends Component {
 
   setTheUser = userObj => this.setState({ loggedInUser: userObj })
 
+
   fetchUser = () => {
-    if (this.state.loggedInUser === null) {
       this.authService.isLoggedIn()
         .then(response => this.setTheUser(response.data))
         .catch(() => this.setTheUser(false))
-    }
+    
+  }
+
+  
+  componentDidMount(){
+    this.state.loggedInUser === null && this.fetchUser()
   }
 
 
@@ -42,10 +47,10 @@ class App extends Component {
           <Route path="/signup" render={props => <Signup {...props} setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login {...props} setTheUser={this.setTheUser} />} />
           <Route path="/" exact render={() => <Home /> }></Route>
-          <Route path="/restaurants" exact render={(props) => <RestaurantList { ...props} loggedInUser={this.state.loggedInUser}/> } />
-          <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail {...props} loggedInUser={this.state.loggedInUser} />} />
-          <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
-          <Route path="/restaurants/new" exact render={() => <RestaurantForm loggedInUser={this.state.loggedInUser} />} />
+          <Route path="/restaurants" exact render={(props) => <RestaurantList updateUser={this.fetchUser} { ...props} loggedInUser={this.state.loggedInUser}/> } />
+          <Route path="/restaurants/detail/:restaurantId" render={(props) => <RestaurantDetail updateUser={this.fetchUser} setTheUser={this.setTheUser} {...props} loggedInUser={this.state.loggedInUser} />} />
+          <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser}  /> : <Redirect to="/" />} />
+          <Route path="/restaurants/new" exact render={() => <RestaurantForm  loggedInUser={this.state.loggedInUser} />} />
           
         </Switch>
       </main>

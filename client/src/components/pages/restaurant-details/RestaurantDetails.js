@@ -57,20 +57,18 @@ class RestaurantDetail extends Component {
     }
     
     submitLike = e => {
-        console.log('entro')
         e.preventDefault()
         const like = {user: this.props.loggedInUser._id, restaurant: this.state.restaurantInfo._id}
         this.restaurantsService.likeRestaurant(like)
-        .then(() => console.log('done'))
+        .then(() => this.props.updateUser())
         .catch(err => console.log(err))
     }
 
     sumbitWish = e => {
-        console.log('entro')
         e.preventDefault()
         const wish = {user: this.props.loggedInUser._id, restaurant: this.state.restaurantInfo._id}
         this.restaurantsService.wishRestaurant(wish)
-        .then(() => console.log('agregado'))
+        .then(() => this.props.updateUser())
         .catch(err => console.log(err))
 
     }
@@ -79,10 +77,10 @@ class RestaurantDetail extends Component {
 
 
     render() {
-        console.log(this.state.restaurantInfo)
+
        if(!this.state.restaurantInfo){
-           return <h1>Cargando</h1>
-       }else return (
+           return <h1>Cargando...</h1>
+       } else return (
             <Container as="section">
 
                 <Row className="restaurant-detail">
@@ -95,7 +93,7 @@ class RestaurantDetail extends Component {
                             <Card.Text className="text-card">Comida {this.state.restaurantInfo.type}</Card.Text>
                             <Card.Text className="text-card">{this.state.restaurantInfo.price}</Card.Text>
                             <Card.Text className="text-card">Ubicación: {this.state.restaurantInfo.loc.street}</Card.Text>
-
+                            <GmapMap pos={this.state.restaurantInfo.loc.coordinates} marker={true} />
                             </Card.Body>
                         </Card>
                     </Col>

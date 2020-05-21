@@ -29,11 +29,9 @@ class Signup extends Component {
 
 
     handleInputChange = e => {
-
         let loginInfoCopy = { ...this.state.loginInfo }
         const { name, value } = e.target
         loginInfoCopy = { ...loginInfoCopy, [name]: value }
-
         this.setState({ loginInfo: loginInfoCopy })
     }
 
@@ -50,7 +48,6 @@ class Signup extends Component {
     }
 
     handleFileUpload = e => {
-
         const uploadData = new FormData()
         uploadData.append('avatar', e.target.files[0])
         this.filesService.handleUploadAvatar(uploadData)

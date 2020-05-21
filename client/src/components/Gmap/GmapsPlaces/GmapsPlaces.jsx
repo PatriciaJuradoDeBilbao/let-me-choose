@@ -1,29 +1,29 @@
-import React from 'react';
+import React from 'react'
 import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng
-} from 'react-places-autocomplete';
-import PlacesDiv from './GmapsPlacesStyle';
+} from 'react-places-autocomplete'
+
 
 export default class GmapsPlaces extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { address: '', coords: "" };
+        this.state = { street: '', coordinates: '' }
     }
 
-    handleChange = address => {
-        this.setState({ address });
+    handleChange = street => {
+        this.setState({ street })
        
     };
 
-    handleSelect = address => {
-        geocodeByAddress(address)
+    handleSelect = street => {
+        geocodeByAddress(street)
             .then(results => getLatLng(results[0]))
-            .then(latLng => this.setState({ ...this.state, coords: latLng, address:address }))
+            .then(latLng => this.setState({ ...this.state, coordinates: latLng, street:street }))
             .then((e)=>{
                 this.props.getData(this.state)
             })
-            .catch(error => console.error('Error', error));
+            .catch(error => console.error('Error', error))
     };
 
 
@@ -32,7 +32,7 @@ export default class GmapsPlaces extends React.Component {
         return (
             <div>
             <PlacesAutocomplete
-                value={this.state.address}
+                value={this.state.street}
                 onChange={this.handleChange}
                 onSelect={this.handleSelect}
                 searchOptions={this.searchOptions}
@@ -41,7 +41,7 @@ export default class GmapsPlaces extends React.Component {
                     <div className="input-wrapper">
                         <input
                             {...getInputProps({
-                                placeholder: 'Busca la ciudad ...',
+                                placeholder: 'Escribe la dirección...',
                                 className: 'location-search-input',
                             })}
                         />
@@ -50,7 +50,7 @@ export default class GmapsPlaces extends React.Component {
                             {suggestions.map(suggestion => {
                                 const className = suggestion.active
                                     ? 'suggestion-item--active'
-                                    : 'suggestion-item';
+                                    : 'suggestion-item'
                                 return (
                                     <div
                                         {...getSuggestionItemProps(suggestion, {
@@ -60,13 +60,13 @@ export default class GmapsPlaces extends React.Component {
                                     >
                                         <span>{suggestion.description}</span>
                                     </div>
-                                );
+                                )
                             })}
                         </div>
                     </div>
                 )}
             </PlacesAutocomplete>
             </div>
-        );
+        )
     }
 }

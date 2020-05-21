@@ -15,7 +15,7 @@ export default class services {
 
     
     addComment = theComment => this.service.post('/newComment', theComment)
-    deleteComment = theComment => this.service.get(`/deleteComment/${theComment}`) // NO FUNCIONA 
+    deleteComment = theComment => this.service.get(`/deleteComment/${theComment}`)
     likeRestaurant = like => this.service.post('/likeRestaurant', like)
     wishRestaurant = wish => this.service.post('/wishRestaurant', wish)
     

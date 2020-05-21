@@ -24,7 +24,6 @@ class Login extends Component {
 
 
     handleInputChange = e => {
-
         let loginInfoCopy = { ...this.state.loginInfo }
         const { name, value } = e.target
         loginInfoCopy = { ...loginInfoCopy, [name]: value }
