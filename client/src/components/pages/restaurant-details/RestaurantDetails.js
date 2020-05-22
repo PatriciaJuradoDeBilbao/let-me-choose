@@ -79,7 +79,7 @@ class RestaurantDetail extends Component {
     render() {
 
        if(!this.state.restaurantInfo){
-           return <h1><Spinner animation="border" variant="secondary" /> Cargando...</h1>
+           return <Spinner className="spinner" size="md" animation="border" variant="secondary" />
        } else return (
             <Container as="section">
 
@@ -116,9 +116,9 @@ class RestaurantDetail extends Component {
                     </Col>
                 }
 
-                    <Col md={5}>
-                        <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></h5>  
-                    </Col>
+                   
+                        <p className="p-rating">{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></p>  
+                   
                     
                     {this.props.loggedInUser &&  <ReviewForm restaurantID={this.state.restaurantInfo._id} refreshReviewList={()=>this.getRestaurantInfo()}/>}
 

@@ -10,6 +10,7 @@ import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import Spinner from 'react-bootstrap/Spinner'
 
 
 class RestaurantList extends Component {
@@ -78,7 +79,6 @@ class RestaurantList extends Component {
         const value = e.currentTarget.value
         const myFavs = this.props.loggedInUser.myFavs
         const myWishList = this.props.loggedInUser.myWishList
-        console.log(myFavs)
         if (value === 'myFavs') {
        
                 this.setState({filteredRestaurants: myFavs})
@@ -91,8 +91,6 @@ class RestaurantList extends Component {
             }
            
     }
-
-
 
 
     filterSearch = () => {
@@ -116,8 +114,9 @@ class RestaurantList extends Component {
     
 
     render() {
-        console.log(this.props.loggedInUser)
-        return (
+        if(!this.state.restaurants){
+           return <Spinner className="spinner" size="md" animation="border" variant="secondary" />
+        } else return (
             <>
             <Container as="section"> 
                 <Row className="restaurants-filter">
@@ -155,6 +154,7 @@ class RestaurantList extends Component {
                         </Form.Group>
                     </Form>
                 </Col>
+                {this.props.loggedInUser &&
                 <Col md={4}>
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
@@ -167,6 +167,7 @@ class RestaurantList extends Component {
                         </Form.Group>
                     </Form>
                 </Col>
+                }
                 </Row>
 
                 <Row>

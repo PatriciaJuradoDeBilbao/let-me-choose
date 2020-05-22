@@ -39,7 +39,16 @@
     width: 20px;
 }
 
-
+.detail-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.p-rating {
+    text-align: right;
+    margin-right: 15px;
+    transform: translateY(-35px);
+}
  /* --- REVIEW CARD */
 
 .comment-title {
@@ -119,4 +128,8 @@ h6 {
 .input-comment {
     font-weight: 500;
 
+}
+
+.spinner {
+    margin: 40%;
 }

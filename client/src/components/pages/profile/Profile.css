@@ -8,11 +8,20 @@
 }
 
 .title-profile {
+    text-align: center;
     margin: 20px 0;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 600;
 
 }
+
+.title-profile-info {
+    color: #134e75;
+    font-size: .7em;
+    font-weight: 500;
+    font-style: oblique;
+}
+
 
 .title-user {
     margin: 20px 0;
@@ -29,21 +38,23 @@
 .favs {
     padding: 15px;
     min-height: 200px;
-    color: white;
+    color: #4881a7;
     margin: 20px;
-    background-color: #5a99c3;
+    border: 1px solid #4881a7;
+    background-color: white;
     padding: 10px;
-    box-shadow: 15px 15px #4881a7;
+    box-shadow: 5px 5px #4881a7;
 }
 
 .wish {
     padding: 15px;
     min-height: 200px;
-    color: white;
+    color: #4881a7;
     margin: 20px;
-    background-color: #5a99c3;
+    border: 1px solid #4881a7;
+    background-color: white;
     padding: 10px;
-    box-shadow: 15px 15px #4881a7;
+    box-shadow: 5px 5px #4881a7;
 }
 
 .rest {
@@ -52,8 +63,8 @@
 }
 
 .rest a  {
-    color: black;
-    font-size: 1em;
+    color:#134e75;
+    font-size: .9em;
     font-weight: 500;
 }
 
@@ -61,7 +72,7 @@
     text-decoration: none;
     font-size: 1.1em;
     transition: .3s;
-    color: black;
+    color:#134e75;
 }
 
 .lists {
@@ -69,5 +80,9 @@
     align-content: center;
 }
 
+.icon-list-profile {
+    width: 30px;
+    margin: 0 10px;   
+}
 
 

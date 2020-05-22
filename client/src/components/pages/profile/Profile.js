@@ -18,15 +18,24 @@ const Profile = props => {
             </Row>
             <Row as="article" className="lists" >
                 <Col md={6} className="favs">
-                    <h1 className="title-profile">Mis Favoritos</h1>
-                    {props.loggedInUser.myFavs.map(favs => <p className="rest"><Link to={`restaurants/detail/${favs._id}`}> {favs.name}</Link> </p>)}  
+                    <h1 className="title-profile">Mis Favoritos<img className="icon-list-profile" src="/images/heart-icon.svg" alt="Heart icon"/></h1>
+                    {props.loggedInUser.myFavs.map(favs => <p className="rest"><Link to={`restaurants/detail/${favs._id}`}>
+                     {favs.name}
+                     <h1 className="title-profile-info">(Comida {favs.type} | Precio {favs.price})</h1>
+                     <h1 className="title-profile-info">{favs.loc.street}</h1>
+                     <hr/>
+                     </Link> </p>)}  
 
                 </Col>
    
                 <Col md={6} className="wish">
-                    <h1 className="title-profile">Mi WishList</h1>
-
-                    {props.loggedInUser.myWishList.map(wish => <p className="rest"><Link to={`restaurants/detail/${wish._id}`}> {wish.name}</Link> </p>)}
+                    <h1 className="title-profile">Mi WishList<img className="icon-list-profile" src="/images/wish-icon.svg" alt="WishList icon"/></h1>
+                    {props.loggedInUser.myWishList.map(wish => <p className="rest"><Link to={`restaurants/detail/${wish._id}`}>
+                     {wish.name}
+                     <h1 className="title-profile-info">(Comida {wish.type} | Precio {wish.price})</h1>
+                     <h1 className="title-profile-info">{wish.loc.street}</h1>
+                     <hr/>
+                     </Link> </p>)}
                 </Col>
                 
             </Row>

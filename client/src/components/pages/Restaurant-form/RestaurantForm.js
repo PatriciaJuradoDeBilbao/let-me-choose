@@ -78,6 +78,7 @@ class RestaurantForm extends Component {
                     <Form.Group controlId="type">
                         <Form.Label className="input-add-title">Tipo de comida</Form.Label>
                         <Form.Control className="input-add" as="select" name="type" value={this.state.type} onChange={this.handleInputChange}>
+                        <option>Selecciona un tipo de comida</option>
                         <option>Italiana</option>
                         <option>Asiática</option>
                         <option>Venezolana</option>
@@ -93,6 +94,7 @@ class RestaurantForm extends Component {
                     <Form.Group controlId="price">
                         <Form.Label className="input-add-title">Rango de precios</Form.Label>
                         <Form.Control className="input-add" as="select" name="price" value={this.state.price} onChange={this.handleInputChange}>
+                        <option>Selecciona un rango de precio</option>
                         <option>Asequible(€)</option>
                         <option>Moderado(€€)</option>
                         <option>Caro(€€€)</option>
