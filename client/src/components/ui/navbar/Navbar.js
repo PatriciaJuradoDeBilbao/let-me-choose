@@ -30,8 +30,7 @@ class Navigation extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
-                        <Nav.Link className="navbar-a" as="div"><Link to="/">Inicio</Link></Nav.Link>
-                        <Nav.Link className="navbar-a" as="div"><Link to="/restaurants">Restaurants</Link></Nav.Link>
+                        <Nav.Link className="navbar-a" as="div"><Link to="/restaurants">Restaurantes</Link></Nav.Link>
 
                         {
                             !this.props.loggedInUser ?
@@ -49,7 +48,7 @@ class Navigation extends Component {
                         }
 
                     </Nav>
-                    <Navbar.Text className="ml-auto greeting"> Hola, {this.props.loggedInUser ? this.props.loggedInUser.username : 'invitad@'}</Navbar.Text>
+                  
                 </Navbar.Collapse>
 
             </Navbar>

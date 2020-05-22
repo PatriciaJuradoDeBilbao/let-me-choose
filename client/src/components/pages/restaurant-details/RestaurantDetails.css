@@ -4,23 +4,26 @@
 }
 
  .title-card {
-    font-size: 2em;
+    font-size: 1.7em;
     font-weight: 600;
 
  }
 
 .text-card {
-    font-size: 1.3em;
+    font-size: 1.1em;
+    font-weight: 500;
 }
 
 .icon-list {
     width: 25px;
     cursor: pointer;
+    flex-wrap: nowrap;
 }
 
 .icons {
     background-color: transparent;
     border: none;
+
 }
 
 .icons:hover {
@@ -34,20 +37,19 @@
 }
 
 
-
  /* --- REVIEW CARD */
 
 .comment-title {
     margin: 10px 0;
     text-align: center;
     font-weight: 500;
-    padding: 15px;
+    padding: 10px;
 }
 
 h5 {
     text-align: right;
     font-weight: 500;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .img-rating {
@@ -55,14 +57,11 @@ h5 {
     margin: 0 3px 3px 5px;
 }
 
-.comment {
-    margin-bottom: 10px;
-}
 
 .avatar {
     border-radius: 50%;
     width: 60px;
-    margin: 10px;
+    margin: 0 10px;
 }
 
 h6 {
@@ -79,7 +78,8 @@ h6 {
 .btn-back {
     margin-bottom: 20px;
     border: none;
-    border-radius: 40px;
+    box-shadow: 5px 5px #134e75;
+    margin-bottom: 50px;
     background-color: #1a6a9f;
     padding: 10px 20px;
 }
@@ -97,7 +97,8 @@ h6 {
 
 .btn-comment {
     border: none;
-    border-radius: 40px;
+    box-shadow: 5px 5px #134e75;
+    margin-bottom: 10px;
     background-color: #1a6a9f;
     padding: 10px 20px;
 }

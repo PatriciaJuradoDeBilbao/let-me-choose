@@ -1,44 +1,50 @@
 .home {
-  margin: 0 50px;
-  padding: 100px;
+  height: 100vh;
 }
 
 .text-home {
-  margin-top: 50px;
-  font-size: 5em;
+  margin-top: 100px;
+  font-size: 4em;
   font-weight: 800;
   color: #1a6b9f;
   text-transform: uppercase;
   }
+
+  .text-home img {
+    width: 60px;
+    margin-bottom: 12px;
+  }
   
 p {
   font-weight: 400;
-  font-size: 1.4em;
+  font-size: 1.3em;
   text-align: center;
   text-align: left;
+  width: 100%;
 }
 
 .text-bold {
   font-weight: 500;
 }
 
-.btn-choose-home {
+.btn-home {
   font-weight: 500;
-  font-size: 1.4em;
+  font-size: 1.1em;
+  padding: 10px 35px;
+  margin: 15px 15px 0 0;
+  border: none;
+  background-color: #1a6a9f;
+  text-transform: uppercase;
+  box-shadow: 5px 5px #134e75;
+} 
+
+.btn:visited {
+  font-weight: 500;
+  font-size: 1.1em;
   padding: 10px 35px;
   margin: 15px 0;
   border: none;
-  border-radius: 40px;
   background-color: #1a6a9f;
   text-transform: uppercase;
-  letter-spacing: 2px;
-
+  box-shadow: 5px 5px #134e75;
 }
-
-.bg {
-  margin-top: 50px;
-  width: 600px;
-  object-fit: cover;
-  opacity: .6;
-}
-

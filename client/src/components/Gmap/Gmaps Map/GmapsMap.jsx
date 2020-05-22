@@ -28,7 +28,7 @@ export default class GmapMap extends Component {
     }
     render() {
         const handleApiLoaded = (map, maps) => {
-          };
+          }
         return (
             <div style={{ height: '200px', width: '100%', zIndex:0}}>
 

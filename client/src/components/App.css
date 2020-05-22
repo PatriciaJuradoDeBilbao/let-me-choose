@@ -9,6 +9,11 @@ h1, h2, h3, h4, strong {
   font-weight: 400;
 }
 
+.btn:visited {
+  border: none;
+  background-color: transparent;
+
+}
 /*  --- AUTH --- */
 
 /* signup  */
@@ -29,9 +34,10 @@ h1, h2, h3, h4, strong {
 
 .btn-signup {
   border: none;
-  border-radius: 40px;
   background-color: #1a6a9f;
   padding: 10px;
+  box-shadow: 5px 5px #134e75;
+  margin-bottom: 10px;
 }
 
 .signup-a {
@@ -58,11 +64,12 @@ h1, h2, h3, h4, strong {
 
 .btn-login {
   border: none;
-  border-radius: 40px;
   background-color: #1a6a9f;
   padding: 10px;
-
+  box-shadow: 5px 5px #134e75;
+  margin-bottom: 10px;
 }
+
 
 .login-a {
   color: #1a6a9f;

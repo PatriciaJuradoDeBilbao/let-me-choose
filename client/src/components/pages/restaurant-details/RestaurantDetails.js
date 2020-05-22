@@ -10,7 +10,7 @@ import ReviewCard from './ReviewCard'
 import './RestaurantDetails.css'
 import ReviewForm from '../Review-form/ReviewForm'
 import GmapMap from '../../Gmap/Gmaps Map/GmapsMap'
-
+import Spinner from 'react-bootstrap/Spinner'
 
 class RestaurantDetail extends Component {
 
@@ -79,7 +79,7 @@ class RestaurantDetail extends Component {
     render() {
 
        if(!this.state.restaurantInfo){
-           return <h1>Cargando...</h1>
+           return <h1><Spinner animation="border" variant="secondary" /> Cargando...</h1>
        } else return (
             <Container as="section">
 

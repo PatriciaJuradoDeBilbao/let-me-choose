@@ -8,7 +8,7 @@ const RestaurantCard = props => {
     return (
         <>
         <Col lg={3} md={4}>
-            <Card as="article" className="shadow-sm mb-5 bg-white rounded">
+            <Card as="article" className=" card-rest">
                 <Card.Img variant="top" src={props.imageUrl} />
                 <Card.Body>
                     <Card.Title as="h3">{props.name}</Card.Title>

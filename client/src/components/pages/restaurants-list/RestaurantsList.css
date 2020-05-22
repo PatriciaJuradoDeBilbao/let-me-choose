@@ -30,18 +30,21 @@ h5 {
     margin: 0 2px;
   }
 
-  .btn-choose {
-    font-weight: 500;
-    font-size: 2em;
-    border: none;
-    border-radius: 40px;
-    background-color: #1a6a9f;
-    margin: 50px 0;
-    padding: 10px;
-  }
+.btn-choose {
+font-weight: 500;
+font-size: 2em;
+border: none;
+background-color: #1a6a9f;
+padding: 10px;
+box-shadow: 5px 5px #134e75;
+margin-bottom: 50px;
+}
+
+
 
 .add-rest {
     margin: 20px 0;
+    text-align: center;
 }
 
 .btn-add {
@@ -50,22 +53,35 @@ h5 {
     padding: 10px 35px;
     margin: 15px 0;
     border: none;
-    border-radius: 40px;
     background-color: #1a6a9f;
+    box-shadow: 5px 5px #134e75;
+    margin-bottom: 10px;
 }
   /* --- RESTAURANT CARD -- */
 
   .btn-detail {
       border: none;
       background-color: #1a6a9f;
-      border-radius: 40px;
       color: white;
       padding: 10px 15px;
+      box-shadow: 5px 5px #134e75;
+      margin-bottom: 10px;
   }
 
   .btn:hover {
     color: white;
-    background-color: #185c8a;
+    background-color: #155783;
+    box-shadow: 5px 5px #185985;
+
+}
+
+.card-rest {
+    box-shadow: 5px 5px rgba(117, 116, 116, .2);
+    margin-bottom: 10px;
+}
+.card-rest:hover {
+    box-shadow: 7px 7px rgba(117, 116, 116, .2);
+    margin-bottom: 10px;
 }
 
 
@@ -79,8 +95,22 @@ h5 {
 
 
   /* FILTROS */
+
   .filter-text {
-      margin-top: 30px;
-      font-weight: 500;
-      font-size: 1.2em;
+    margin-top: 40px;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+  .filter-text {
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 1.2em;
+  }
+
+  .input-last {
+      margin-bottom: 20px;
+  }
+
+  .restaurants-filter {
+      margin-top: 20px;
   }

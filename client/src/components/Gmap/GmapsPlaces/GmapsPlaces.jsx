@@ -24,7 +24,7 @@ export default class GmapsPlaces extends React.Component {
                 this.props.getData(this.state)
             })
             .catch(error => console.error('Error', error))
-    };
+    }
 
 
     render() {

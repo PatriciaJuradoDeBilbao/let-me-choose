@@ -31,7 +31,7 @@ class RestaurantList extends Component {
         }
         this.restaurantsService = new RestaurantsService()
     }
-
+    
 
     handleModal = visible => this.setState({ modalShow: visible})
 
@@ -76,14 +76,26 @@ class RestaurantList extends Component {
 
     handleFilterByList = e => {
         const value = e.currentTarget.value
-        this.setState({listsValue: value}, () => this.filterSearch()) // this.prop.wish list y loggedin PARA FILTRAR POR MIS LISTAS - POR HACER
+        const myFavs = this.props.loggedInUser.myFavs
+        const myWishList = this.props.loggedInUser.myWishList
+        console.log(myFavs)
+        if (value === 'myFavs') {
+                this.state.filteredRestaurants.push(...myFavs)
+            }
+            else if(value === 'myWishList') {
+                this.state.filteredRestaurants.push(...myWishList)
+            }
+            this.setState({restaurant: myFavs.myFavs})
     }
+
+
 
 
     filterSearch = () => {
         const restaurantsToShow = this.state.restaurants
             .filter(restaurant => restaurant.type.includes(this.state.typeValue))
             .filter(restaurant => restaurant.price.includes(this.state.priceValue))
+            
 
         this.setState({filteredRestaurants: restaurantsToShow})
     }
@@ -100,7 +112,7 @@ class RestaurantList extends Component {
     
 
     render() {
-
+        console.log(this.props.loggedInUser)
         return (
             <>
             <Container as="section"> 
@@ -143,7 +155,7 @@ class RestaurantList extends Component {
                     <Form>
                         <Form.Group controlId="exampleForm.SelectCustom">
                             <Form.Label className="filter-text">Tus listas</Form.Label>
-                            <Form.Control onChange={this.handleFilterByList} as="select" custom>
+                            <Form.Control className="input-last" onChange={this.handleFilterByList} as="select" custom>
                             <option>Elige una de tus listas</option>
                             <option value="myFavs">Mis Favoritos</option>
                             <option value="myWishList">Mi WishList</option>
@@ -154,7 +166,7 @@ class RestaurantList extends Component {
                 </Row>
 
                 <Row>
-                    <Col md={{span: 8, offset: 2}}> 
+                    <Col sm={2} md={{span: 8, offset: 2}} className="choose"> 
                        <Button  onClick={() => this.randomRestaurant()} className="btn btn-info btn-choose btn-block">Ch<img className="img-logo" src="/images/flechas.svg" alt="logo" />se </Button>
                     </Col>
                 </Row>
