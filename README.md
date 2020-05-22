@@ -1,4 +1,4 @@
-# Let me choose :twisted_rightwards_arrows: :plate_with_cutlery
+# Let me choose :twisted_rightwards_arrows: :plate_with_cutlery:
 
 Es una SPA creada para las personas que pierden mucho tiempo buscando un restaurante donde comer fuera y nunca se deciden, puedes filtrar por el tipo de comida que te apetezca y el rango de precio que quieras gastar y nosotros elegimos por ti, también puedes añadir restaurantes como favoritos o a tu wish list y elegir entre ellos.
 
