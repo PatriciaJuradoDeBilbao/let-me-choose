@@ -19,7 +19,7 @@ h1, h2, h3, h4, strong {
 /* signup  */
 
 .title-signup {
-  margin: 60px 0 40px 0;
+  margin: 40px;
   text-align: center;
   font-weight: 600;
   font-size: 1.8em;
@@ -45,7 +45,19 @@ h1, h2, h3, h4, strong {
   font-weight: 500;
 }
 
+.input-signup {
+  border: none;
+  border-bottom: 2px solid  #175c8a;
+}
+.input-signup-title {
+  font-weight: 500;
+
+}
+
+
+
 /* login */
+
 
 .title-login {
   margin: 80px 0 40px 0;
@@ -67,7 +79,7 @@ h1, h2, h3, h4, strong {
   background-color: #1a6a9f;
   padding: 10px;
   box-shadow: 5px 5px #134e75;
-  margin-bottom: 10px;
+  margin: 15px 0;
 }
 
 
@@ -76,6 +88,10 @@ h1, h2, h3, h4, strong {
   font-weight: 500;
 }
 
+.input-login {
+  border: none;
+  border-bottom: 2px solid  #134e75;
+}
 
 .error-message {
   margin: 10px 0;

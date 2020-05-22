@@ -80,19 +80,23 @@ class RestaurantList extends Component {
         const myWishList = this.props.loggedInUser.myWishList
         console.log(myFavs)
         if (value === 'myFavs') {
-                this.state.filteredRestaurants.push(...myFavs)
+       
+                this.setState({filteredRestaurants: myFavs})
             }
             else if(value === 'myWishList') {
-                this.state.filteredRestaurants.push(...myWishList)
+        
+                this.setState({filteredRestaurants: myWishList})
+            }else{
+                this.setState({filteredRestaurants: this.state.restaurants})
             }
-            this.setState({restaurant: myFavs.myFavs})
+           
     }
 
 
 
 
     filterSearch = () => {
-        const restaurantsToShow = this.state.restaurants
+        const restaurantsToShow = this.state.filteredRestaurants
             .filter(restaurant => restaurant.type.includes(this.state.typeValue))
             .filter(restaurant => restaurant.price.includes(this.state.priceValue))
             
@@ -177,7 +181,7 @@ class RestaurantList extends Component {
                 
                 <Row>
                 {this.props.loggedInUser &&
-                    <Col md={{span: 8, offset: 2}} className="add-rest">
+                    <Col md={4} className="add-rest">
                     <h6>¿Eres el dueño de un restaurante?</h6>
                         <Button onClick={() => this.handleModal(true)} variant="info" type="submit" className="btn-lg btn-add">Añadir tu restaurante</Button>
                     </Col>

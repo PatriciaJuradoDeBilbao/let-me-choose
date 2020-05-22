@@ -57,6 +57,14 @@ margin-bottom: 50px;
     box-shadow: 5px 5px #134e75;
     margin-bottom: 10px;
 }
+
+.btn-add:focus {
+    outline: 0;
+    box-shadow: 5px 5px #134e75;
+    background-color: #1a6a9f;
+
+}
+
   /* --- RESTAURANT CARD -- */
 
   .btn-detail {

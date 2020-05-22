@@ -36,7 +36,7 @@ class Login extends Component {
         this.authService.login(this.state.loginInfo)
             .then(response => {
                 this.props.setTheUser(response.data)
-                this.props.history.push('/profile')
+                this.props.history.push('/restaurants')
             })
             .catch(err => console.log(err))
     }
@@ -49,19 +49,19 @@ class Login extends Component {
             <Container className="containter-login">
 
                 <Row>
-                    <Col md={{ span: 6, offset: 2 }}>
+                    <Col md={{ span: 7, offset: 2 }} className="login-col">
 
                         <h3 className="title-login">Inicio de sesión</h3>
                         <Form onSubmit={this.handleSubmit}>
 
                             <Form.Group controlId="name">
                                 <Form.Label>Usuario</Form.Label>
-                                <Form.Control name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
+                                <Form.Control className="input-login" name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
                             </Form.Group>
 
                             <Form.Group controlId="pwd">
                                 <Form.Label>Contraseña</Form.Label>
-                                <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
+                                <Form.Control className="input-login" name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
                             </Form.Group>
 
 

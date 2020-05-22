@@ -68,16 +68,16 @@ class RestaurantForm extends Component {
                 <h1 className="title">Añade tu restaurante</h1>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="imageUrl">
-                        <Form.Label>Imagen</Form.Label>
+                        <Form.Label className="input-add-title">Imagen</Form.Label>
                         <Form.Control type="file" name="imageUrl" onChange={this.handleFileUpload}/>
                     </Form.Group>
                     <Form.Group controlId="name">
-                        <Form.Label>Nombre</Form.Label>
-                        <Form.Control  name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
+                        <Form.Label className="input-add-title">Nombre</Form.Label>
+                        <Form.Control className="input-add" name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
                     </Form.Group>
                     <Form.Group controlId="type">
-                        <Form.Label>Tipo de comida</Form.Label>
-                        <Form.Control as="select" name="type" value={this.state.type} onChange={this.handleInputChange}>
+                        <Form.Label className="input-add-title">Tipo de comida</Form.Label>
+                        <Form.Control className="input-add" as="select" name="type" value={this.state.type} onChange={this.handleInputChange}>
                         <option>Italiana</option>
                         <option>Asiática</option>
                         <option>Venezolana</option>
@@ -91,8 +91,8 @@ class RestaurantForm extends Component {
                         </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="price">
-                        <Form.Label>Rango de precios</Form.Label>
-                        <Form.Control as="select" name="price" value={this.state.price} onChange={this.handleInputChange}>
+                        <Form.Label className="input-add-title">Rango de precios</Form.Label>
+                        <Form.Control className="input-add" as="select" name="price" value={this.state.price} onChange={this.handleInputChange}>
                         <option>Asequible(€)</option>
                         <option>Moderado(€€)</option>
                         <option>Caro(€€€)</option>
@@ -102,7 +102,7 @@ class RestaurantForm extends Component {
                  
                 {this.state.loc && 
                         <Form.Group controlId="location">
-                        <Form.Label>Dirección</Form.Label>
+                        <Form.Label className="input-add-title">Dirección</Form.Label>
                         <GmapsPlaces getData = {(data => this.getData(data))}></GmapsPlaces>
                         </Form.Group>
                     }

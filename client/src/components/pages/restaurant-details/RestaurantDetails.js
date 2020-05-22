@@ -89,9 +89,8 @@ class RestaurantDetail extends Component {
                         <Card>
                             <Card.Img variant="top" className="img-detail" src={this.state.restaurantInfo.imageUrl} />
                             <Card.Body>
-                            <Card.Text className="title-card">{this.state.restaurantInfo.name}</Card.Text>
-                            <Card.Text className="text-card">Comida {this.state.restaurantInfo.type}</Card.Text>
-                            <Card.Text className="text-card">{this.state.restaurantInfo.price}</Card.Text>
+                            <Card.Text className="title-card">{this.state.restaurantInfo.name} </Card.Text>
+                            <Card.Text className="text-card">Comida {this.state.restaurantInfo.type} |  Precio {this.state.restaurantInfo.price}</Card.Text>
                             <Card.Text className="text-card">Ubicación: {this.state.restaurantInfo.loc.street}</Card.Text>
                             <GmapMap pos={this.state.restaurantInfo.loc.coordinates} marker={true} />
                             </Card.Body>
@@ -120,12 +119,11 @@ class RestaurantDetail extends Component {
                     <Col md={5}>
                         <h5>{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></h5>  
                     </Col>
+                    
                     {this.props.loggedInUser &&  <ReviewForm restaurantID={this.state.restaurantInfo._id} refreshReviewList={()=>this.getRestaurantInfo()}/>}
 
-                    <Col md={{span: 8, offset: 1}}>
-                        <hr/>
+                    <Col className="comment-col" md={{span: 8, offset: 1}}>
                         <h3 className="comment-title">Comentarios</h3>
-                        <hr/>
                     </Col>
                     
                     {this.state.restaurantInfo.myReviews && this.displayReviews() }

@@ -16,7 +16,7 @@ const Home = () => {
                     <p>Si eres de los que pasas horas buscando un lugar donde comer fuera y nunca te decides...</p>
                     <p className="text-bold" >¡Estás en el lugar correcto!</p>
                     <Link to="/signup" className="btn btn-info btn-home">Regístrate</Link>
-                    <Link to="/restaurant" className="btn btn-info btn-home">Ver Restaurantes</Link>
+                    <Link to="/restaurants" className="btn btn-info btn-home">Ver Restaurantes</Link>
                 </Col>
 
 

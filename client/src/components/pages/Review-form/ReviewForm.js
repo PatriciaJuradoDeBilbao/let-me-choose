@@ -43,7 +43,7 @@ class ReviewForm extends Component {
                         <Form.Control placeholder="Escribe tu comentario aquí" as="textarea" rows="3" name="content" value={this.state.content} onChange={this.handleInputChange} />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label>¿Qué puntuación le das?</Form.Label>
+                        <Form.Label className="input-comment">¿Qué puntuación le das?</Form.Label>
                         <Form.Control as="select" name="rating" value={this.state.rating} onChange={this.handleInputChange}>
                         <option>Selecciona un número del 1 al 5</option>
                         <option>1</option>

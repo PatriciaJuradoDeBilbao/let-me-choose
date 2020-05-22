@@ -30,7 +30,7 @@ export default class GmapMap extends Component {
         const handleApiLoaded = (map, maps) => {
           }
         return (
-            <div style={{ height: '200px', width: '100%', zIndex:0}}>
+            <div className="input-autocomplete" style={{ height: '200px', width: '100%', zIndex:0}}>
 
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyAN0mEFC4qZuRccTd0vgrFsddCVbVzLx1o" }}

@@ -1,6 +1,5 @@
 .restaurant-form {
     margin-bottom: 20px;
-
 }
 
 .title {
@@ -10,23 +9,34 @@
     text-align: center;
     text-transform: uppercase;
     color: #1a6a9f;
-
 }
 
-
-.btn-close {
-    margin: 0 0 0 410px; 
+.btn-close { 
     background-color: transparent;
     border: none;
 }
 
 .btn-close:hover {
-    margin: 0 0 0 410px; 
     background-color: transparent;
     border: none;
 }
 
+.btn-close:focus {
+    background-color: transparent;
+    border: none;
+}
 
 .btn-close img {
     width: 20px;
 }
+
+.input-add {
+    border: none;
+    border-bottom: 2px solid  #175c8a;
+  }
+  
+  .input-add-title {
+    font-weight: 500;
+  
+  }
+  

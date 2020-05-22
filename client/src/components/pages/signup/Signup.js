@@ -71,30 +71,31 @@ class Signup extends Component {
                     <Col md={{ span: 6, offset: 3 }} className="signup">
 
                         <h3 className="title-signup">Registro de usuario</h3>
+                        <hr/>
                         <Form className="form-signup" onSubmit={this.handleSubmit}>
 
                             <Form.Group controlId="avatar">
-                                <Form.Label>Foto de perfil</Form.Label>
+                                <Form.Label className="input-signup-title">Foto de perfil</Form.Label>
                                 <Form.Control name="avatar" type="file" onChange={this.handleFileUpload} />
                             </Form.Group>
                             <Form.Group  controlId="name">
-                                <Form.Label >Nombre</Form.Label>
-                                <Form.Control className="input-signup" name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
+                                <Form.Label className="input-signup-title" >Nombre</Form.Label>
+                                <Form.Control className="input-signup"  name="name" type="text" value={this.state.name} onChange={this.handleInputChange} />
                             </Form.Group>
 
                             <Form.Group controlId="username">
-                                <Form.Label>Usuario</Form.Label>
-                                <Form.Control name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
+                                <Form.Label className="input-signup-title">Usuario</Form.Label>
+                                <Form.Control className="input-signup" name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
                             </Form.Group>
 
                             <Form.Group controlId="email">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control name="email" type="email" value={this.state.email} onChange={this.handleInputChange} />
+                                <Form.Label className="input-signup-title" >Email</Form.Label>
+                                <Form.Control className="input-signup" name="email" type="email" value={this.state.email} onChange={this.handleInputChange} />
                             </Form.Group>
 
                             <Form.Group controlId="pwd">
-                                <Form.Label>Contraseña</Form.Label>
-                                <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
+                                <Form.Label className="input-signup-title">Contraseña</Form.Label>
+                                <Form.Control className="input-signup" name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
                             </Form.Group>
 
                             <Button variant="info" className="btn btn-block btn-signup" type="submit">Registrarme</Button>
