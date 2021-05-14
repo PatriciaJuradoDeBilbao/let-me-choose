@@ -115,9 +115,15 @@ class RestaurantDetail extends Component {
                     
                     </Col>
                 }
-
-                   
-                        <p className="p-rating">{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></p>  
+                {this.props.loggedInUser ?
+                   <Col md={{span: 4, offset: 4}}>
+                    <p className="p-rating">{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></p>  
+                   </Col>
+                : 
+                <Col md={{span: 2, offset: 8}}>
+                <p className="p-rating">{this.state.restaurantInfo.myReviews && this.averageRating()}  <img className="img-rating" src="/images/estrella_rating.svg" alt="Star icon" /></p>  
+               </Col>
+                }
                    
                     
                     {this.props.loggedInUser &&  <ReviewForm restaurantID={this.state.restaurantInfo._id} refreshReviewList={()=>this.getRestaurantInfo()}/>}

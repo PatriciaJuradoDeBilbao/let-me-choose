@@ -682,7 +682,7 @@ Promise.all([deleteUsers, deleteRestaurant, deleteComment])
                         username: faker.internet.userName(),
                         email: faker.internet.email(),
                         password: bcrypt.hashSync('paty', salt),
-                        avatar: faker.internet.avatar(),
+                        avatar: 'https://res.cloudinary.com/drhetggfq/image/upload/v1620915553/Let-me-choose/abstract-847_d5ubfh.png',
                         myFavs: [allRestaurants[randomNum(allRest.length)]._id, allRestaurants[randomNum(allRest.length)]._id, allRestaurants[randomNum(allRest.length)]._id],
                         myWishList: [allRestaurants[randomNum(allRest.length)]._id, allRestaurants[randomNum(allRest.length)]._id, allRestaurants[randomNum(allRest.length)]._id]
                     })

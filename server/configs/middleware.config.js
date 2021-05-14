@@ -1,4 +1,4 @@
-const bodyParser = require('body-parser')
+const express = require('express')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
@@ -18,7 +18,7 @@ module.exports = app => {
     app.use(cors(corsOptions))
 
     app.use(logger('dev'))
-    app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded({ extended: false }))
+    app.use(express.urlencoded({extended: false}));
+    app.use(express.json()) 
     app.use(cookieParser())
 }

@@ -8,7 +8,7 @@ const userSchema = new Schema({
     password: String,
     avatar: {
         type: String,
-        default: 'https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png'
+        default: 'https://res.cloudinary.com/drhetggfq/image/upload/v1620915553/Let-me-choose/abstract-847_d5ubfh.png'
     },
     myReviews: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
     myRestaurant: [{type: Schema.Types.ObjectId, ref: 'Restaurant'}],

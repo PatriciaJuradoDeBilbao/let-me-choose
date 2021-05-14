@@ -33,7 +33,7 @@ export default class GmapMap extends Component {
             <div className="input-autocomplete" style={{ height: '200px', width: '100%', zIndex:0}}>
 
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyAN0mEFC4qZuRccTd0vgrFsddCVbVzLx1o" }}
+                    bootstrapURLKeys={{ key: "AIzaSyA7afbAOIUr_n0cNEpkzMAz26ROhz1Heu4" }}
                     defaultCenter={this.props.pos && this.props.pos}
                     defaultZoom={this.props.zoom}
                     yesIWantToUseGoogleMapApiInternals

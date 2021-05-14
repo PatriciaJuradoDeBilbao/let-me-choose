@@ -44,28 +44,24 @@
     flex-direction: row;
     justify-content: space-around;
 }
-.p-rating {
-    text-align: right;
-    margin-right: 15px;
-    transform: translateY(-35px);
-}
+
  /* --- REVIEW CARD */
 
 .comment-title {
-padding: 15px;
+    padding: 15px;
     text-align: center;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-top: 8px;
     color: white;
+    
 
 }
 .comment-col {
     background-color: #1a6a9f;
     padding: 10px;
     margin-bottom: 20px;
-
 }
 
 h5 {
@@ -82,7 +78,7 @@ h5 {
 
 .avatar {
     border-radius: 50%;
-    width: 50px;
+    width: 40px;
     margin: 0 10px;
 }
 
